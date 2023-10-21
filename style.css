@@ -1,0 +1,104 @@
+body,
+h1,
+form {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.search-form {
+    text-align: center;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+input,
+select {
+    margin: 0 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.psicTable {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.psicTable th,
+.psicTable td {
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.psicTable th {
+    background-color: #333;
+    color: #fff;
+}
+
+.psicTable tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Responsive Styles for Smaller Screens */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    .search-bar {
+        flex-direction: column;
+    }
+
+    select {
+        margin: 10px 0;
+        width: 100%;
+        font-size: 12px;
+    }
+
+    input {
+        margin: 10px 0;
+        min-width: max-content;
+        font-size: 12px;
+    }
+
+    .psicTable th,
+    .psicTable td {
+        font-size: 12px;
+    }
+}

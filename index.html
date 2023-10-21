@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BN Descriptor Search Bar</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>BN Descriptor Search Tool</h1>
+    <form class="search-form" autocomplete="off">
+      <div class="search-bar">
+        <input type="text" name="keyword">
+        <select name="select-option" id="">
+          <option selected value="bnValue">BN DESCRIPTOR</option>
+          <option value="class">PSIC CLASS</option>
+          <option value="group">PSIC GROUP</option>
+          <option value="division">PSIC DIVISION</option>
+        </select>
+      </div>
+    </form>
+
+    <table class="psicTable">
+      <thead>
+        <tr>
+          <th>BN DESCRIPTOR</th>
+          <th>PSIC CLASS</th>
+          <th>PSIC GROUP</th>
+          <th>PSIC DIVISION</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+  <script src="./scripts.js" type="module"></script>
+</body>
+
+</html>
