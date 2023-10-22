@@ -8,6 +8,7 @@ form {
 body {
     background-color: #f4f4f4;
     font-family: Arial, sans-serif;
+    color: #444444;
 }
 
 .container {
@@ -63,7 +64,7 @@ select {
 }
 
 .psicTable th {
-    background-color: #333;
+    background-color: #444444;
     color: #fff;
 }
 
@@ -101,4 +102,8 @@ select {
     .psicTable td {
         font-size: 12px;
     }
+}
+
+.active-cell {
+    font-weight: bold;
 }
