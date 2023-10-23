@@ -1,8 +1,11 @@
 const searchForm = document.querySelector(".search-form");
-const select = document.querySelector("[name='select-option']")
+const inputElement = document.getElementById('searchInput')
+const select = document.querySelector("[name='select-option']");
 const psicTable = document.querySelector(".psicTable");
 const thElement = psicTable.querySelectorAll("th");
 const resultCountDiv = document.querySelector(".resultCount");
+
+let prevActiveTH = null
 
 async function fetchDescriptors() {
     const response = await fetch("./bnDescriptors.json");
@@ -21,7 +24,7 @@ async function changeKeyName() {
         "BND_VALUE": "bnValue"
     };
 
-    const changedDescriptors = descriptors.map((item) => {
+    const reconstructDescriptors = descriptors.map((item) => {
         return Object.fromEntries(
             Object.entries(item).map(([key, value]) => {
                 const newKey = keyMapping[key];
@@ -30,39 +33,60 @@ async function changeKeyName() {
         );
     });
 
-    return changedDescriptors;
+    return reconstructDescriptors;
+}
+
+function isValidKeyword(keyword) {
+    return keyword.length >= 3;
 }
 
 async function handleInput() {
+    const selectedOption = select.value;
+    const keyword = searchForm.keyword.value;
+
+    // Transform the input text to uppercase
+    inputElement.value = inputElement.value.toUpperCase();
+
     // Delete existing result
     const existingTbody = psicTable.querySelector("tbody");
     if (existingTbody) {
         psicTable.removeChild(existingTbody);
     }
 
-    const selectedOption = select.value;
-    const keyword = searchForm.keyword.value;
+    if (resultCountDiv.textContent) {
+        resultCountDiv.textContent = "";
+    }
+
     const descArray = await changeKeyName();
     
-    if (keyword.length >= 3) {
-    await displayResults(descArray, keyword, selectedOption);
+    if (isValidKeyword(keyword)) {
+        await displayResults(descArray, keyword, selectedOption);
     }
+    highlightActiveHeader();
 }
 
-let prevActiveTH = null;
+function handleChange() {
+    if (prevActiveTH) {
+        prevActiveTH.style.background = "";
+    }
 
-function highlightActiveOption(select, tbody) {
+    highlightActiveHeader();
+}
+
+function highlightActiveHeader() {
     const selectedOptionText = select.options[select.selectedIndex].text;
-    const selectedOptionIndex = select.selectedIndex;
-    // Highlight the background of active table header
     const activeTH = Array.from(thElement).find(th => th.textContent === selectedOptionText);
     if (activeTH) {
         if (prevActiveTH) {
             prevActiveTH.style.background = "";
         }
-        activeTH.style.background = "black";
+        activeTH.style.background = "rgb(20, 20, 20)";
         prevActiveTH = activeTH;
     }
+}
+
+function highlightActiveCells(select, tbody) {
+    const selectedOptionIndex = select.selectedIndex;
 
     // Highlight the text of the active table data
     const rows = tbody.querySelectorAll(".result-row");
@@ -70,27 +94,28 @@ function highlightActiveOption(select, tbody) {
         const td = row.querySelectorAll("td");
         td.forEach((cell, index) => {
             if (index === selectedOptionIndex) {
-                // Add a class to the active cell
                 cell.classList.add("active-cell");
             } else {
-                // Remove the class from other cells
                 cell.classList.remove("active-cell");
             }
         });
     });
 }
 
-function showResultCount(select, tbody) {
+function showResultCount(select, tbody, keyword) {
     const selectedOptionText = select.options[select.selectedIndex].text;
     const rows = tbody.getElementsByTagName("tr");
-    resultCountDiv.textContent = "";
-    if (rows.length > 0) {
-        resultCountDiv.textContent = `${selectedOptionText} found: ${rows.length}`;
+    if (isValidKeyword(keyword)) {
+        if (rows.length > 0) {
+            resultCountDiv.textContent = `${selectedOptionText} found: ${rows.length}`;
+        } else {
+            return resultCountDiv.textContent = "No result found."
+        }
     }
 }
 
-function filterByKeyword(array, keyword, option) {
-    const result = array.filter(item => item[`${option}`].includes(keyword.toUpperCase()));
+async function filterByKeyword(array, keyword, option) {
+    const result = await array.filter(item => item[`${option}`].includes(keyword.toUpperCase()));
     return result;
 }
 
@@ -108,8 +133,9 @@ async function displayResults(array, keyword, option) {
         );
     newTbody.innerHTML = html.join("");
     psicTable.appendChild(newTbody);
-    showResultCount(select, newTbody);
-    highlightActiveOption(select, newTbody);
+    showResultCount(select, newTbody, keyword);
+    highlightActiveCells(select, newTbody);
 }
 
 searchForm.addEventListener("input", handleInput);
+select.addEventListener("change", handleChange);

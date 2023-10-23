@@ -12,15 +12,13 @@
   <div class="container">
     <h1>BN DESCRIPTOR SEARCH TOOL</h1>
     <form class="search-form" autocomplete="off">
-      <div class="search-bar">
-        <input type="text" name="keyword">
-        <select name="select-option" id="">
-          <option selected value="bnValue">BN DESCRIPTOR</option>
-          <option value="class">PSIC CLASS</option>
-          <option value="group">PSIC GROUP</option>
-          <option value="division">PSIC DIVISION</option>
-        </select>
-      </div>
+      <input type="text" name="keyword" id="searchInput" placeholder="Search...">
+      <select name="select-option" id="">
+        <option selected value="bnValue">BN DESCRIPTOR</option>
+        <option value="class">PSIC CLASS</option>
+        <option value="group">PSIC GROUP</option>
+        <option value="division">PSIC DIVISION</option>
+      </select>
     </form>
 
     <div class="resultCount"></div>
@@ -34,7 +32,36 @@
           <th>PSIC DIVISION</th>
         </tr>
       </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+
     </table>
+
+    <div class="dateAcquired">
+      <a href="https://bnrs.dti.gov.ph/resources/download" target="_blank">PSIC Descriptors (as of October 02, 2023)</a>
+    </div>
+
+    <div class="footer">
+      <p class="footer-content">&copy; 2023 BN Descriptor Search Tool</p>
+    </div>
   </div>
   <script src="./scripts.js"></script>
 </body>

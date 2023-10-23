@@ -1,75 +1,139 @@
-body,
-h1,
-form {
+/* Reset */
+body, h1, form {
     margin: 0;
     padding: 0;
 }
 
+/* Body */
 body {
-    background-color: #f4f4f4;
-    font-family: Arial, sans-serif;
-    color: #444444;
+    display: flex;
+    flex-direction: column;
+    background-color: #f7f7f7;
+    font-family: 'Arial', sans-serif;
+    color: #333;
 }
 
+/* Container */
 .container {
-    max-width: 800px;
+    max-width: 1080px;
     margin: 0 auto;
     padding: 20px;
     background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
+/* Header */
 h1 {
     text-align: center;
-    font-size: 24px;
-    margin-bottom: 20px;
+    font-size: 40px;
+    margin: 40px 0;
+    font-weight: 700;
+    color: #333;
 }
 
-.search-form {
-    text-align: center;
-}
-
-.search-bar {
+/* Form */
+form {
     display: flex;
     justify-content: center;
     margin: 20px 0;
 }
 
-input,
-select {
+input, select {
     margin: 0 10px;
-    padding: 10px;
+    padding: 12px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
+    color: #555;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s, border-color 0.3s;
 }
 
+input {
+    width: 500px;
+}
+
+input::placeholder {
+    color: #999;
+}
+
+select {
+    cursor: pointer;
+}
+
+/* Result Count */
+.resultCount {
+    font-size: 14px;
+    margin-top: 40px;
+    color: #666;
+}
+
+/* Table */
 .psicTable {
     table-layout: fixed;
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
     background-color: #fff;
-    border: 1px solid #ddd;
+    border: 1px solid #e0e0e0;
     border-radius: 5px;
+    margin-top: 20px;
 }
 
-.psicTable th,
-.psicTable td {
-    padding: 10px;
+.psicTable th, .psicTable td {
+    padding: 12px;
     text-align: center;
+    font-size: 18px;
+    color: #444;
+}
+
+.psicTable td {
     font-size: 16px;
 }
 
 .psicTable th {
-    background-color: #444444;
+    background-color: #333;
     color: #fff;
 }
 
 .psicTable tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #f7f7f7;
+}
+
+.active-cell {
+    font-weight: 600;
+    color: #222;
+}
+
+/* Date Acquired */
+.dateAcquired {
+    margin-top: 60px;
+    text-align: center;
+}
+
+.dateAcquired a {
+    font-size: 16px;
+    color: #444;
+    text-decoration: none;
+}
+
+.dateAcquired a:hover {
+    color: #000;
+}
+
+.dateAcquired a:active {
+    color: #2525ff;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    margin-top: 20px;
+    font-size: 14px;
 }
 
 /* Responsive Styles for Smaller Screens */
@@ -79,31 +143,48 @@ select {
     }
 
     h1 {
-        font-size: 20px;
+        font-size: 28px;
     }
 
-    .search-bar {
+    form {
         flex-direction: column;
     }
 
     select {
         margin: 10px 0;
         width: 100%;
-        font-size: 12px;
     }
 
     input {
         margin: 10px 0;
-        min-width: max-content;
-        font-size: 12px;
+        width: auto;
     }
 
-    .psicTable th,
-    .psicTable td {
+    input, select,
+    .psicTable th, .psicTable td {
+        font-size: 14px;
+    }
+
+    .resultCount {
+        font-size: 14px;
+        margin-top: 32px;
+    }
+
+    .psicTable {
+        margin-top: 16px;
+    }
+
+    .dateAcquired {
+        margin-top: 30px;
+    }
+
+    .dateAcquired a {
+        font-size: 14px;
+    }
+
+    .footer {
+        margin-top: 15px;
+        padding: 15px;
         font-size: 12px;
     }
-}
-
-.active-cell {
-    font-weight: bold;
 }
