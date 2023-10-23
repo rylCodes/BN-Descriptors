@@ -1,5 +1,7 @@
 /* Reset */
-body, h1, form {
+body,
+h1,
+form {
     margin: 0;
     padding: 0;
 }
@@ -10,7 +12,7 @@ body {
     flex-direction: column;
     background-color: #f7f7f7;
     font-family: 'Arial', sans-serif;
-    color: #333;
+    color: #3d3d3d;
 }
 
 /* Container */
@@ -30,7 +32,7 @@ h1 {
     font-size: 40px;
     margin: 40px 0;
     font-weight: 700;
-    color: #333;
+    color: #3d3d3d;
 }
 
 /* Form */
@@ -40,7 +42,9 @@ form {
     margin: 20px 0;
 }
 
-input, select {
+/* Input */
+input,
+select {
     margin: 0 10px;
     padding: 12px;
     border: 1px solid #ccc;
@@ -59,8 +63,26 @@ input::placeholder {
     color: #999;
 }
 
+/* Select */
 select {
+    width: 250px;
     cursor: pointer;
+}
+
+select option {
+    background-color: #fff;
+    color: #555;
+    border: 1px solid #e0e0e0;
+}
+
+select option:hover {
+    background-color: #f7f7f7;
+    color: #444;
+}
+
+select option:checked {
+    background-color: #007BFF;
+    color: #fff;
 }
 
 /* Result Count */
@@ -81,34 +103,34 @@ select {
     margin-top: 20px;
 }
 
-.psicTable th, .psicTable td {
+.psicTable th,
+.psicTable td {
     padding: 12px;
     text-align: center;
-    font-size: 18px;
-    color: #444;
 }
 
 .psicTable td {
     font-size: 16px;
+    color: #444;
 }
 
 .psicTable th {
-    background-color: #333;
+    font-size: 18px;
+    background-color: #3d3d3d;
     color: #fff;
+}
+
+.psicTable th.active-header {
+    background-color: rgb(24, 24, 24);
 }
 
 .psicTable tbody tr:nth-child(even) {
     background-color: #f7f7f7;
 }
 
-.active-cell {
-    font-weight: 600;
-    color: #222;
-}
-
 /* Date Acquired */
 .dateAcquired {
-    margin-top: 60px;
+    margin-top: 120px;
     text-align: center;
 }
 
@@ -131,9 +153,15 @@ select {
     text-align: center;
     background-color: #333;
     color: #fff;
-    padding: 20px;
+    padding: 25px;
     margin-top: 20px;
     font-size: 14px;
+    border-radius: 0 0 5px 5px;
+}
+
+.active-column {
+    font-weight: 600;
+    color: rgb(24, 24, 24);
 }
 
 /* Responsive Styles for Smaller Screens */
@@ -160,8 +188,10 @@ select {
         width: auto;
     }
 
-    input, select,
-    .psicTable th, .psicTable td {
+    input,
+    select,
+    .psicTable th,
+    .psicTable td {
         font-size: 14px;
     }
 
@@ -175,14 +205,15 @@ select {
     }
 
     .dateAcquired {
-        margin-top: 30px;
+        margin-top: 90px;
     }
 
     .dateAcquired a {
         font-size: 14px;
     }
 
-    .footer {
+    .footer,
+    .footer-content {
         margin-top: 15px;
         padding: 15px;
         font-size: 12px;

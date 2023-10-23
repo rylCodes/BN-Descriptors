@@ -24,7 +24,7 @@ async function changeKeyName() {
         "BND_VALUE": "bnValue"
     };
 
-    const reconstructDescriptors = descriptors.map((item) => {
+    const newKeysMapped = await descriptors.map((item) => {
         return Object.fromEntries(
             Object.entries(item).map(([key, value]) => {
                 const newKey = keyMapping[key];
@@ -33,35 +33,39 @@ async function changeKeyName() {
         );
     });
 
-    return reconstructDescriptors;
+    return newKeysMapped;
 }
 
 function isValidKeyword(keyword) {
     return keyword.length >= 3;
 }
 
-async function handleInput() {
-    const selectedOption = select.value;
-    const keyword = searchForm.keyword.value;
+function deleteExistingTbody(tbody) {
+    if (tbody) {
+        return psicTable.removeChild(tbody);
+    }
+}
 
+async function handleInput() {
     // Transform the input text to uppercase
     inputElement.value = inputElement.value.toUpperCase();
 
-    // Delete existing result
-    const existingTbody = psicTable.querySelector("tbody");
-    if (existingTbody) {
-        psicTable.removeChild(existingTbody);
-    }
+    const reconstructedDescriptors = await changeKeyName();
+    const selectedOption = select.value;
+    const keyword = searchForm.keyword.value;
 
     if (resultCountDiv.textContent) {
         resultCountDiv.textContent = "";
     }
+    const existingTbody = psicTable.querySelector("tbody");
 
-    const descArray = await changeKeyName();
-    
     if (isValidKeyword(keyword)) {
-        await displayResults(descArray, keyword, selectedOption);
+        deleteExistingTbody(existingTbody);
+        await displayResults(reconstructedDescriptors, keyword, selectedOption);
+    } else {
+        deleteExistingTbody(existingTbody);
     }
+
     highlightActiveHeader();
 }
 
@@ -78,9 +82,9 @@ function highlightActiveHeader() {
     const activeTH = Array.from(thElement).find(th => th.textContent === selectedOptionText);
     if (activeTH) {
         if (prevActiveTH) {
-            prevActiveTH.style.background = "";
+            prevActiveTH.classList.remove("active-header");
         }
-        activeTH.style.background = "rgb(20, 20, 20)";
+        activeTH.classList.add("active-header");
         prevActiveTH = activeTH;
     }
 }
@@ -94,9 +98,9 @@ function highlightActiveCells(select, tbody) {
         const td = row.querySelectorAll("td");
         td.forEach((cell, index) => {
             if (index === selectedOptionIndex) {
-                cell.classList.add("active-cell");
+                cell.classList.add("active-column");
             } else {
-                cell.classList.remove("active-cell");
+                cell.classList.remove("active-column");
             }
         });
     });
@@ -121,9 +125,8 @@ async function filterByKeyword(array, keyword, option) {
 
 async function displayResults(array, keyword, option) {
     const filteredArr = await filterByKeyword(array, keyword, option);
-    const newTbody = document.createElement("tbody");
 
-    const html = filteredArr.map(item =>
+    const html = await filteredArr.map(item =>
         `<tr class=result-row>
           <td>${item.bnValue}</td>
           <td>${item.class}</td>
@@ -131,8 +134,11 @@ async function displayResults(array, keyword, option) {
           <td>${item.division}</td>
         </tr>`
         );
-    newTbody.innerHTML = html.join("");
+    
+    const newTbody = document.createElement("tbody");
+    newTbody.innerHTML = await html.join("");
     psicTable.appendChild(newTbody);
+
     showResultCount(select, newTbody, keyword);
     highlightActiveCells(select, newTbody);
 }
