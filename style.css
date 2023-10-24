@@ -93,14 +93,25 @@ select option:checked {
 }
 
 /* Table */
+.table-container {
+    overflow-y: auto;
+    max-height: 450px;
+    margin-top: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+}
+
 .psicTable {
     table-layout: fixed;
     width: 100%;
     border-collapse: collapse;
     background-color: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 5px;
-    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.psicTable thead {
+    position: sticky;
+    top: 0;
 }
 
 .psicTable th,
@@ -201,7 +212,7 @@ select option:checked {
         margin-top: 32px;
     }
 
-    .psicTable {
+    .table-container {
         margin-top: 16px;
     }
 
