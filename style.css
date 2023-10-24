@@ -165,13 +165,13 @@ select option:checked {
 }
 
 /* Responsive Styles for Smaller Screens */
-@media (max-width: 768px) {
+@media (max-width: 1200px) and (max-width: 768px) {
     .container {
         padding: 10px;
     }
 
     h1 {
-        font-size: 28px;
+        font-size: 30px;
     }
 
     form {
@@ -191,7 +191,8 @@ select option:checked {
     input,
     select,
     .psicTable th,
-    .psicTable td {
+    .psicTable td,
+    .dateAcquired a {
         font-size: 14px;
     }
 
@@ -208,14 +209,26 @@ select option:checked {
         margin-top: 90px;
     }
 
-    .dateAcquired a {
-        font-size: 14px;
-    }
-
     .footer,
     .footer-content {
         margin-top: 15px;
         padding: 15px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    .resultCount,
+    .psicTable th,
+    .dateAcquired a {
+        font-size: 13px;
+    }
+    
+    .psicTable td {
         font-size: 12px;
     }
 }

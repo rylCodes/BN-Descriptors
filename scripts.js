@@ -14,7 +14,7 @@ async function fetchDescriptors() {
 }
 
 async function changeKeyName() {
-    const descriptors = await fetchDescriptors();
+    const descriptorsObj = await fetchDescriptors();
     
     const keyMapping = {
         "PSIC_SEC_DESC": "sector",
@@ -24,13 +24,12 @@ async function changeKeyName() {
         "BND_VALUE": "bnValue"
     };
 
-    const newKeysMapped = await descriptors.map((item) => {
-        return Object.fromEntries(
-            Object.entries(item).map(([key, value]) => {
-                const newKey = keyMapping[key];
-                return [newKey, value];
-            })
-        );
+    const newKeysMapped = await descriptorsObj.map((item) => {
+        const entries = Object.entries(item).map(([key, value]) => {
+            const newKey = keyMapping[key];
+            return [newKey, value];
+        });
+        return Object.fromEntries(entries);
     });
 
     return newKeysMapped;
@@ -47,7 +46,7 @@ function deleteExistingTbody(tbody) {
 }
 
 async function handleInput() {
-    // Transform the input text to uppercase
+    // Transform the input text to uppercase first.
     inputElement.value = inputElement.value.toUpperCase();
 
     const reconstructedDescriptors = await changeKeyName();
@@ -64,14 +63,6 @@ async function handleInput() {
         await displayResults(reconstructedDescriptors, keyword, selectedOption);
     } else {
         deleteExistingTbody(existingTbody);
-    }
-
-    highlightActiveHeader();
-}
-
-function handleChange() {
-    if (prevActiveTH) {
-        prevActiveTH.style.background = "";
     }
 
     highlightActiveHeader();
@@ -144,4 +135,3 @@ async function displayResults(array, keyword, option) {
 }
 
 searchForm.addEventListener("input", handleInput);
-select.addEventListener("change", handleChange);
