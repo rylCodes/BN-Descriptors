@@ -3,7 +3,7 @@ const inputElement = document.getElementById('searchInput')
 const select = document.querySelector("[name='select-option']");
 const psicTable = document.querySelector(".psicTable");
 const thElement = psicTable.querySelectorAll("th");
-const resultCountDiv = document.querySelector(".resultCount");
+const resultCounter = document.querySelector(".resultCounter");
 
 let prevActiveTH = null
 
@@ -53,8 +53,8 @@ async function handleInput() {
     const selectedOption = select.value;
     const keyword = searchForm.keyword.value;
 
-    if (resultCountDiv.textContent) {
-        resultCountDiv.textContent = "";
+    if (resultCounter.textContent) {
+        resultCounter.textContent = "";
     }
     const existingTbody = psicTable.querySelector("tbody");
 
@@ -97,14 +97,14 @@ function highlightActiveCells(select, tbody) {
     });
 }
 
-function showResultCount(select, tbody, keyword) {
+function showresultCounter(select, tbody, keyword) {
     const selectedOptionText = select.options[select.selectedIndex].text;
     const rows = tbody.getElementsByTagName("tr");
     if (isValidKeyword(keyword)) {
         if (rows.length > 0) {
-            resultCountDiv.textContent = `${selectedOptionText} found: ${rows.length}`;
+            resultCounter.textContent = `${selectedOptionText} found: ${rows.length}`;
         } else {
-            return resultCountDiv.textContent = "No result found."
+            return resultCounter.textContent = "No result found."
         }
     }
 }
@@ -130,7 +130,7 @@ async function displayResults(array, keyword, option) {
     newTbody.innerHTML = await html.join("");
     psicTable.appendChild(newTbody);
 
-    showResultCount(select, newTbody, keyword);
+    showresultCounter(select, newTbody, keyword);
     highlightActiveCells(select, newTbody);
 }
 

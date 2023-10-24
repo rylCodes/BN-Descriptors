@@ -10,15 +10,15 @@ form {
 body {
     display: flex;
     flex-direction: column;
-    background-color: #f7f7f7;
+    background-color: #2a3d55;
     font-family: 'Arial', sans-serif;
-    color: #3d3d3d;
+    color: #444;
 }
 
 /* Container */
 .container {
     max-width: 1080px;
-    margin: 0 auto;
+    margin: 40px auto;
     padding: 20px;
     background-color: #fff;
     border: 1px solid #e0e0e0;
@@ -32,7 +32,7 @@ h1 {
     font-size: 40px;
     margin: 40px 0;
     font-weight: 700;
-    color: #3d3d3d;
+    color: #444;
 }
 
 /* Form */
@@ -52,7 +52,6 @@ select {
     font-size: 16px;
     color: #555;
     background-color: #f9f9f9;
-    transition: background-color 0.3s, border-color 0.3s;
 }
 
 input {
@@ -81,13 +80,13 @@ select option:hover {
 }
 
 select option:checked {
-    background-color: #007BFF;
+    background-color: #0972e2;
     color: #fff;
 }
 
 /* Result Count */
-.resultCount {
-    font-size: 14px;
+.resultCounter {
+    font-size: 15px;
     margin-top: 40px;
     color: #666;
 }
@@ -127,12 +126,12 @@ select option:checked {
 
 .psicTable th {
     font-size: 18px;
-    background-color: #3d3d3d;
+    background-color: #2a3d55;
     color: #fff;
 }
 
 .psicTable th.active-header {
-    background-color: rgb(24, 24, 24);
+    background-color: #172231;
 }
 
 .psicTable tbody tr:nth-child(even) {
@@ -140,22 +139,22 @@ select option:checked {
 }
 
 /* Date Acquired */
-.dateAcquired {
-    margin-top: 120px;
+.dataDateAcquired {
+    margin-top: 100px;
     text-align: center;
 }
 
-.dateAcquired a {
+.dataDateAcquired a {
     font-size: 16px;
     color: #444;
     text-decoration: none;
 }
 
-.dateAcquired a:hover {
+.dataDateAcquired a:hover {
     color: #000;
 }
 
-.dateAcquired a:active {
+.dataDateAcquired a:active {
     color: #2525ff;
 }
 
@@ -172,7 +171,7 @@ select option:checked {
 
 .active-column {
     font-weight: 600;
-    color: rgb(24, 24, 24);
+    color: #172231;
 }
 
 /* Responsive Styles for Smaller Screens */
@@ -203,21 +202,21 @@ select option:checked {
     select,
     .psicTable th,
     .psicTable td,
-    .dateAcquired a {
+    .dataDateAcquired a {
         font-size: 14px;
     }
 
-    .resultCount {
+    .resultCounter {
         font-size: 14px;
-        margin-top: 32px;
+        margin-top: 30px;
     }
 
     .table-container {
         margin-top: 16px;
     }
 
-    .dateAcquired {
-        margin-top: 90px;
+    .dataDateAcquired {
+        margin-top: 75px;
     }
 
     .footer,
@@ -229,16 +228,21 @@ select option:checked {
 }
 
 @media (max-width: 768px) {
+    .container {
+        margin: 30px auto;
+        padding: 15px;
+    }
+
     h1 {
         font-size: 24px;
     }
 
-    .resultCount,
+    .resultCounter,
     .psicTable th,
-    .dateAcquired a {
+    .dataDateAcquired a {
         font-size: 13px;
     }
-    
+
     .psicTable td {
         font-size: 12px;
     }
