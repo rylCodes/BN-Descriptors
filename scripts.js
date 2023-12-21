@@ -4,8 +4,18 @@ const select = document.querySelector("[name='select-option']");
 const psicTable = document.querySelector(".psicTable");
 const thElement = psicTable.querySelectorAll("th");
 const resultCounter = document.querySelector(".resultCounter");
+const aboutPageModal = document.querySelector(".aboutPage-modal");
 
 let prevActiveTH = null
+let searchTimeout;
+
+function closeAboutPage() {
+    aboutPageModal.classList.add("hidden");
+}
+
+function openAboutPage() {
+    aboutPageModal.classList.remove("hidden");
+}
 
 async function fetchDescriptors() {
     const response = await fetch("./bnDescriptors.json");
@@ -40,8 +50,8 @@ function isValidKeyword(keyword) {
 }
 
 function deleteExistingTbody(tbody) {
-    if (tbody) {
-        return psicTable.removeChild(tbody);
+    if (psicTable.contains(tbody)) {
+        psicTable.removeChild(tbody);
     }
 }
 
@@ -55,17 +65,25 @@ async function handleInput() {
 
     if (resultCounter.textContent) {
         resultCounter.textContent = "";
-    }
+    };
+
     const existingTbody = psicTable.querySelector("tbody");
 
-    if (isValidKeyword(keyword)) {
-        deleteExistingTbody(existingTbody);
-        await displayResults(reconstructedDescriptors, keyword, selectedOption);
-    } else {
-        deleteExistingTbody(existingTbody);
-    }
+    if (searchTimeout) {
+        clearTimeout(searchTimeout);
+    };
 
-    highlightActiveHeader();
+    searchTimeout = setTimeout(async () => {
+        if (isValidKeyword(keyword)) {
+            deleteExistingTbody(existingTbody);
+            await displayResults(reconstructedDescriptors, keyword, selectedOption);
+        } else {
+            deleteExistingTbody(existingTbody);
+        }
+    
+        highlightActiveHeader();
+        scrollToResults();
+    }, 300)
 }
 
 function highlightActiveHeader() {
@@ -117,12 +135,13 @@ async function filterByKeyword(array, keyword, option) {
 async function displayResults(array, keyword, option) {
     const filteredArr = await filterByKeyword(array, keyword, option);
 
-    const html = await filteredArr.map(item =>
+    const html = await filteredArr.map((item, index) =>
         `<tr class=result-row>
           <td>${item.bnValue}</td>
           <td>${item.class}</td>
           <td>${item.group}</td>
           <td>${item.division}</td>
+          <td class="psic-sector">${item.sector}</td>
         </tr>`
         );
     
@@ -134,4 +153,10 @@ async function displayResults(array, keyword, option) {
     highlightActiveCells(select, newTbody);
 }
 
+function scrollToResults() {
+    searchForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
 searchForm.addEventListener("input", handleInput);
+
+window.addEventListener("submit", e => e.preventDefault());

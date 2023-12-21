@@ -10,14 +10,19 @@
 
 <body>
   <div class="container">
+    <header>
+      <p class="about" onclick="openAboutPage()">About</p>
+    </header>
+
     <h1>BN DESCRIPTOR SEARCH TOOL</h1>
     <form class="search-form" autocomplete="off">
       <input type="text" name="keyword" id="searchInput" autofocus placeholder="Search...">
-      <select name="select-option">
+      <select id="select-option" name="select-option">
         <option selected value="bnValue">BN DESCRIPTOR</option>
         <option value="class">PSIC CLASS</option>
         <option value="group">PSIC GROUP</option>
         <option value="division">PSIC DIVISION</option>
+        <option value="sector">PSIC SECTOR</option>
       </select>
     </form>
 
@@ -31,6 +36,7 @@
             <th>PSIC CLASS</th>
             <th>PSIC GROUP</th>
             <th>PSIC DIVISION</th>
+            <th class="psic-sector">PSIC SECTOR</th>
           </tr>
         </thead>
         <tbody>
@@ -39,49 +45,83 @@
             <td></td>
             <td></td>
             <td></td>
+            <td class="psic-sector"></td>
           </tr>
           <tr>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
+            <td class="psic-sector"></td>
           </tr>
           <tr>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
+            <td class="psic-sector"></td>
           </tr>
           <tr>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
+            <td class="psic-sector"></td>
           </tr>
           <tr>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
+            <td class="psic-sector"></td>
           </tr>
           <tr>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
+            <td class="psic-sector"></td>
           </tr>
         </tbody>
       </table>
     </div>
 
     <div class="dataDateAcquired">
-      <a href="https://bnrs.dti.gov.ph/resources/download" target="_blank">Download → PSIC Descriptors (as of October
-        02, 2023)</a>
+      <a href="https://bnrs.dti.gov.ph/resources/download" target="_blank">Download → PSIC Descriptors (as of December
+        01, 2023)</a>
     </div>
 
     <div class="footer">
-      <p class="footer-content">&copy; 2023 BN Descriptor Search Tool</p>
+      <p class="footer-content">
+        &copy; 2023 BN Descriptor Search Tool <br>
+      </p>
+      <p class="version">Version: <strong>1.1.0</strong></p>
     </div>
+
+    <!-- Modal: About Page -->
+    <div class="aboutPage-modal hidden">
+      <div class="aboutPage-modal-content">
+        <p class="content-heading">
+          Welcome to the <strong>BN Descriptor Search Tool</strong>!
+        </p>
+
+        <p class="content-paragraph">This platform is a user-friendly, single-page website created to facilitate users in effortlessly exploring and accessing available Business Name Descriptors at absolutely no cost. It aims to simplify the search process and provide an intuitive interface for individuals seeking PSIC Descriptors.
+        </p>
+
+        <p class="content-paragraph">
+          Please note that while the <strong>BN Descriptor Search Tool</strong> is independently owned and hosted by <strong>Negosyo Center Business Counselor Daryl Andres</strong>, the data is sourced from the <a href="https://bnrs.dti.gov.ph/" target="_blank">Business Name Registration System (BNRS)</a>. The core dataset used within this tool is extracted from the comprehensive PSIC Descriptors file, accessible for download at <a href="https://bnrs.dti.gov.ph/resources/download" target="_blank">https://bnrs.dti.gov.ph/resources/download</a> via the BNRS platform. 
+        </p>
+        
+        <p class="content-paragraph">
+          Thank you for using the BN Descriptor Search Tool. Explore, discover, and simplify your search for Business Name Descriptors effortlessly!
+        </p>
+
+        <div class="aboutPage-modal-options">
+            <button type id="aboutPage-option" class="closeAboutPage" onclick="closeAboutPage()">Close</button>
+        </div>
+      </div>  
+    </div>
+
   </div>
   <script src="./scripts.js"></script>
 </body>
