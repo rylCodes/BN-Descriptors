@@ -4,125 +4,161 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BN Descriptor Search Tool</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="./style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+  <!-- For small screens (16x16 pixels) -->
+  <link rel="icon" type="image/png" href="./favicon/favicon-16x16.png" sizes="16x16">
+  <!-- For medium screens (32x32 pixels) -->
+  <link rel="icon" type="image/png" href="./favicon/favicon-32x32.png" sizes="32x32">
+  <!-- Default favicon -->
+  <link rel="icon" type="image/png" href="./favicon/favicon.png">
+  <link rel="stylesheet" href="/src/output.css">
+  <title>BN Descriptor Search Tool</title>
 </head>
 
-<body>
-  <div class="container">
-    <header>
-      <p class="about" onclick="openAboutPage()">About</p>
-    </header>
+<body class="bg-gradient-to-r from-[#7160C1] via-[#00A0E0] to-[#00C9B7] text-white">
+  <header>
+    <div class="flex justify-between items-center h-16 p-6 w-full max-w-7xl mx-auto">
+      <div class="aspect-square p-2 bg-white rounded-full shadow-xl">
+        <a href="/">
+          <img src="./img/logo-32x32.png" alt="bndesc-finder-logo">
+        </a>
+      </div>
+      <nav class="flex items-center gap-6 text-sm font-semibold">
+        <a class="cursor-pointer py-1 border-b-4 border-transparent hover:border-white transition-all duration-300" href="/">HOME</a>
+        <a class="cursor-pointer py-1 border-b-4 border-transparent hover:border-white transition-all duration-300" onclick="openAboutPage()">ABOUT</a>
+        <a class="cursor-pointer py-1 border-b-4 border-transparent hover:border-white transition-all duration-300" href="https://qrlink-maker.darylandres.com/">QRLINK</a>
+      </nav>
+    </div>
+  </header>
 
-    <h1>BN DESCRIPTOR SEARCH TOOL</h1>
-    <form class="search-form" autocomplete="off">
-      <input type="text" name="keyword" id="searchInput" autofocus placeholder="Search...">
-      <select id="select-option" name="select-option">
-        <option selected value="bnValue">BN DESCRIPTOR</option>
-        <option value="class">PSIC CLASS</option>
-        <option value="group">PSIC GROUP</option>
-        <option value="division">PSIC DIVISION</option>
-        <option value="sector">PSIC SECTOR</option>
-      </select>
+  <div class="container mx-auto px-6 w-full max-w-7xl min-h-svh mt-12">
+    <h1 class="text-center text-4xl font-bold cstm-txt-shadow md:text-5xl">BN DESCRIPTORS</h1>
+    <form class="mt-12 text-[#344B47]" id="search-form" autocomplete="off">
+      <div class="flex flex-col gap-4 items-center w-full md:flex-row">
+        <div class="w-full md:w-2/3 shadow-lg">
+          <input class="w-full px-4 py-2 rounded-md" type="text" name="keyword" id="searchInput" autofocus placeholder="Search...">
+        </div>
+        
+        <div class="w-full shadow-lg md:flex-1">
+          <select class="w-full px-4 py-2 rounded-md" id="select-option" name="select-option">
+            <option selected value="bnValue">BN DESCRIPTOR</option>
+            <option value="class">PSIC CLASS</option>
+            <option value="group">PSIC GROUP</option>
+            <option value="division">PSIC DIVISION</option>
+            <option value="sector">PSIC SECTOR</option>
+          </select>
+        </div>
+      </div>
     </form>
 
-    <div class="resultCounter"></div>
+    <div class="mt-6" id="resultCounter"></div>
 
-    <div class="table-container">
-      <table class="psicTable">
-        <thead>
+    <div class="border-2 border-white rounded-lg shadow-xl mt-6 overflow-x-auto text-sm md:text-base">
+      <table class="w-full text-center" id="psicTable">
+        <thead class="text-[#344B47] bg-white">
           <tr>
-            <th>BN DESCRIPTOR</th>
-            <th>PSIC CLASS</th>
-            <th>PSIC GROUP</th>
-            <th>PSIC DIVISION</th>
-            <th class="psic-sector">PSIC SECTOR</th>
+            <th class="px-4 py-2 rounded-tl-md">DESCRIPTOR</th>
+            <th class="px-4 py-2">PSIC CLASS</th>
+            <th class="px-4 py-2">PSIC GROUP</th>
+            <th class="px-4 py-2">PSIC DIVISION</th>
+            <th class="px-4 py-2 rounded-tr-md">PSIC SECTOR</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td class="psic-sector"></td>
+            <td class="px-4 py-2"></td>
+            <td class="px-4 py-2"></td>
+            <td class="px-4 py-2"></td>
+            <td class="px-4 py-2"></td>
+            <td class="px-4 py-2"></td>
           </tr>
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td class="psic-sector"></td>
+            <td class="px-4 py-2"></td>
+            <td class="px-4 py-2"></td>
+            <td class="px-4 py-2"></td>
+            <td class="px-4 py-2"></td>
+            <td class="px-4 py-2"></td>
           </tr>
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td class="psic-sector"></td>
+            <td class="px-4 py-2"></td>
+            <td class="px-4 py-2"></td>
+            <td class="px-4 py-2"></td>
+            <td class="px-4 py-2"></td>
+            <td class="px-4 py-2"></td>
           </tr>
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td class="psic-sector"></td>
+            <td class="px-4 py-2"></td>
+            <td class="px-4 py-2"></td>
+            <td class="px-4 py-2"></td>
+            <td class="px-4 py-2"></td>
+            <td class="px-4 py-2"></td>
           </tr>
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td class="psic-sector"></td>
+            <td class="px-4 py-2"></td>
+            <td class="px-4 py-2"></td>
+            <td class="px-4 py-2"></td>
+            <td class="px-4 py-2"></td>
+            <td class="px-4 py-2"></td>
           </tr>
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td class="psic-sector"></td>
+            <td class="px-4 py-2"></td>
+            <td class="px-4 py-2"></td>
+            <td class="px-4 py-2"></td>
+            <td class="px-4 py-2"></td>
+            <td class="px-4 py-2"></td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <div class="dataDateAcquired">
-      <a href="https://bnrs.dti.gov.ph/resources/download" target="_blank">Download → PSIC Descriptors (as of December
-        01, 2023)</a>
+    <div class="text-center mt-6">
+      <p>PSIC Descriptors (as of December 01, 2023)</p>
+      <p>Download the latest here → <a href="https://bnrs.dti.gov.ph/resources/download" target="_blank"><strong>Click me!</strong></a></p>
     </div>
-
-    <div class="footer">
-      <p class="footer-content">
-        &copy; 2023 BN Descriptor Search Tool <br>
-      </p>
-      <p class="version">Version: <strong>1.1.0</strong></p>
-    </div>
-
-    <!-- Modal: About Page -->
-    <div class="aboutPage-modal hidden">
-      <div class="aboutPage-modal-content">
-        <p class="content-heading">
-          Welcome to the <strong>BN Descriptor Search Tool</strong>!
-        </p>
-
-        <p class="content-paragraph">This platform is a user-friendly, single-page website created to facilitate users in effortlessly exploring and accessing available Business Name Descriptors at absolutely no cost. It aims to simplify the search process and provide an intuitive interface for individuals seeking PSIC Descriptors.
-        </p>
-
-        <p class="content-paragraph">
-          Please note that while the <strong>BN Descriptor Search Tool</strong> is independently owned and hosted by <strong>Negosyo Center Business Counselor Daryl Andres</strong>, the data is sourced from the <a href="https://bnrs.dti.gov.ph/" target="_blank">Business Name Registration System (BNRS)</a>. The core dataset used within this tool is extracted from the comprehensive PSIC Descriptors file, accessible for download at <a href="https://bnrs.dti.gov.ph/resources/download" target="_blank">https://bnrs.dti.gov.ph/resources/download</a> via the BNRS platform. 
-        </p>
-        
-        <p class="content-paragraph">
-          Thank you for using the BN Descriptor Search Tool. Explore, discover, and simplify your search for Business Name Descriptors effortlessly!
-        </p>
-
-        <div class="aboutPage-modal-options">
-            <button type id="aboutPage-option" class="closeAboutPage" onclick="closeAboutPage()">Close</button>
-        </div>
-      </div>  
-    </div>
-
   </div>
+
+  <!-- Modal: About Page -->
+  <div id="aboutPage-modal" class="hidden fixed top-0 left-0 w-full h-screen bg-gradient-to-r from-[#7160C1] via-[#00A0E0] to-[#00C9B7]">
+    <button type id="aboutPage-option" class="absolute z-50 top-10 right-10" onclick="closeAboutPage()">
+      <i class="fa-solid fa-xmark text-3xl"></i>
+    </button>
+    <div class="max-w-5xl w-full mx-auto h-full flex flex-col gap-4 mt-20 p-6">
+      <h3 class="text-xl">
+        Welcome to the <strong>BN Descriptor Search Tool</strong>!
+      </h3>
+
+      <p>This platform is a user-friendly, single-page website created to facilitate users in effortlessly exploring and accessing available Business Name Descriptors at absolutely no cost. It aims to simplify the search process and provide an intuitive interface for individuals seeking PSIC Descriptors.
+      </p>
+
+      <p>
+        Please note that while the <strong>BN Descriptor Search Tool</strong> is independently owned and hosted by <strong>Negosyo Center Business Counselor Daryl Andres</strong>, the data is sourced from the <a href="https://bnrs.dti.gov.ph/" target="_blank">Business Name Registration System (BNRS)</a>. The core dataset used within this tool is extracted from the comprehensive PSIC Descriptors file, accessible for download at <a href="https://bnrs.dti.gov.ph/resources/download" target="_blank">https://bnrs.dti.gov.ph/resources/download</a> via the BNRS platform. 
+      </p>
+      
+      <p>
+        Thank you for using the BN Descriptor Search Tool. Explore, discover, and simplify your search for Business Name Descriptors effortlessly!
+      </p>
+    </div>  
+  </div>
+
+  <footer class="mt-12 border-t border-white text-sm text-center md:text-start">
+    <div class="flex flex-col justify-between items-center gap-6 p-6 mx-auto max-w-7xl w-full md:flex-row md:items-start">
+      <div class="flex flex-col gap-2">
+        <p><strong>Relevant Links:</strong></p>
+        <a class="relevant-link" href="https://bnrs.dti.gov.ph/">BNRS</a>
+        <a class="relevant-link" href="https://bmbe.dti.gov.ph/">BMBE Official Site</a>
+      </div>
+      
+      <div class="flex flex-col gap-2">
+        <p>&copy; 2023-2024 BN Descriptor Search Tool</p>
+        <p class="version">Version: <strong>1.2.0</strong></p>
+      </div>
+    </div>
+  </footer>
+
   <script src="./scripts.js"></script>
 </body>
 

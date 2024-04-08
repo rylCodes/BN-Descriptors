@@ -1,10 +1,10 @@
-const searchForm = document.querySelector(".search-form");
+const searchForm = document.querySelector("#search-form");
 const inputElement = document.getElementById('searchInput')
 const select = document.querySelector("[name='select-option']");
-const psicTable = document.querySelector(".psicTable");
+const psicTable = document.querySelector("#psicTable");
 const thElement = psicTable.querySelectorAll("th");
-const resultCounter = document.querySelector(".resultCounter");
-const aboutPageModal = document.querySelector(".aboutPage-modal");
+const resultCounter = document.querySelector("#resultCounter");
+const aboutPageModal = document.querySelector("#aboutPage-modal");
 
 let prevActiveTH = null
 let searchTimeout;
@@ -137,11 +137,11 @@ async function displayResults(array, keyword, option) {
 
     const html = await filteredArr.map((item, index) =>
         `<tr class=result-row>
-          <td>${item.bnValue}</td>
-          <td>${item.class}</td>
-          <td>${item.group}</td>
-          <td>${item.division}</td>
-          <td class="psic-sector">${item.sector}</td>
+          <td class="px-2 py-1">${item.bnValue}</td>
+          <td class="px-2 py-1">${item.class}</td>
+          <td class="px-2 py-1">${item.group}</td>
+          <td class="px-2 py-1">${item.division}</td>
+          <td class="px-2 py-1">${item.sector}</td>
         </tr>`
         );
     
