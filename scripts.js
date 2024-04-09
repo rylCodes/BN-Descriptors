@@ -4,7 +4,7 @@ const select = document.querySelector("[name='select-option']");
 const psicTable = document.querySelector("#psicTable");
 const thElement = psicTable.querySelectorAll("th");
 const resultCounter = document.querySelector("#resultCounter");
-const aboutPageModal = document.querySelector("#aboutPage-modal");
+const aboutPageModal = document.querySelector("#about");
 const clearText = document.querySelector("#clear-text");
 const container = document.querySelector(".container");
 

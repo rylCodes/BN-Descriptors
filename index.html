@@ -32,9 +32,9 @@
 
       <!-- Default -->
       <nav class="hidden items-center gap-4 text-sm font-semibold md:gap-6 md:flex">
-        <a class="cursor-pointer py-1 border-b-4 border-transparent hover:border-white transition-all duration-300" href="#home">HOME</a>
-        <a class="cursor-pointer py-1 border-b-4 border-transparent hover:border-white transition-all duration-300" href="#descriptors">DESCRIPTORS</a>
-        <a class="cursor-pointer py-1 border-b-4 border-transparent hover:border-white transition-all duration-300" onclick="openAboutPage()" tabindex="0">ABOUT</a>
+        <a class="py-1 border-b-4 border-transparent hover:border-white transition-all duration-300" href="#home">HOME</a>
+        <a class="py-1 border-b-4 border-transparent hover:border-white transition-all duration-300" href="#descriptors">DESCRIPTORS</a>
+        <a class="py-1 border-b-4 border-transparent hover:border-white transition-all duration-300" href="#about" onclick="openAboutPage()">ABOUT</a>
       </nav>
 
       <!-- Hamburger Menu -->
@@ -46,9 +46,9 @@
 
       <!-- Mobile Nav -->
       <div onclick="toggleNav()" id="mobile-nav" class="absolute top-full right-0 translate-x-full flex flex-col bg-gradient-to-tr from-[#CB25B9] to-[#008CFF] shadow-lg w-full text-[#344B47] text-sm font-semibold transition-all duration-300 md:hidden">
-        <a class="cursor-pointer p-3 bg-white hover:bg-transparent hover:text-white transition-all duration-300" href="#home">HOME</a>
-        <a class="cursor-pointer p-3 bg-white hover:bg-transparent hover:text-white transition-all duration-300" href="#descriptors">DESCRIPTORS</a>
-        <a class="cursor-pointer p-3 bg-white hover:bg-transparent hover:text-white transition-all duration-300" onclick="openAboutPage()" tabindex="0">ABOUT</a>
+        <a class="p-3 bg-white hover:bg-transparent hover:text-white transition-all duration-300" href="#home">HOME</a>
+        <a class="p-3 bg-white hover:bg-transparent hover:text-white transition-all duration-300" href="#descriptors">DESCRIPTORS</a>
+        <a class="p-3 bg-white hover:bg-transparent hover:text-white transition-all duration-300" href="#about" onclick="openAboutPage()">ABOUT</a>
       </div>
     </div>
   </header> 
@@ -162,7 +162,7 @@
   </div>
 
   <!-- Modal: About Page -->
-  <div id="aboutPage-modal" class="hidden fixed top-0 left-0 w-full h-screen bg-gradient-to-tr from-[#8b0000] via-[#CB25B9] to-[#008CFF]">
+  <div id="about" class="hidden fixed top-0 left-0 w-full h-screen bg-gradient-to-tr from-[#8b0000] via-[#CB25B9] to-[#008CFF]">
     <button id="aboutPage-option" class="absolute z-50 top-10 right-10 hover:opacity-75" onclick="closeAboutPage()">
       <i class="fa-solid fa-xmark text-3xl"></i>
     </button>
@@ -192,7 +192,7 @@
         <div><strong>Navigation:</strong></div>
         <a class="hover:text-white" href="#home">Home</a>
         <a class="hover:text-white" href="#descriptors">Descriptors</a>
-        <a class="hover:text-white cursor-pointer" tabindex="0"onclick="openAboutPage()">About</a>
+        <a class="hover:text-white" href="#about" onclick="openAboutPage()">About</a>
       </div>
 
       <div class="flex flex-col gap-2">
@@ -211,7 +211,7 @@
     <div class="bg-[rgba(255,255,255,0.2)] text-white">
       <div class="flex flex-col justify-between gap-2 items-center p-6 max-w-7xl mx-auto w-full md:flex-row">
         <p><strong>Copyright &copy; 2024 BnDescFinder.</strong> All rights reserved.</p>
-        <p class="version">Version: <strong>1.2.0</strong></p>
+        <p class="version">Version: <strong>1.2.2</strong></p>
       </div>
     </div>
   </footer>
