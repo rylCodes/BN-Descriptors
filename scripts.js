@@ -207,7 +207,6 @@ function toggleNav() {
 }
 
 function startSearching() {
-    console.log("it works!")
     setTimeout(() => {
         inputElement.focus();
     }, 300);
