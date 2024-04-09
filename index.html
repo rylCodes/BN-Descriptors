@@ -16,144 +16,201 @@
   <!-- Default favicon -->
   <link rel="icon" type="image/png" href="./favicon/favicon.png">
   <link rel="stylesheet" href="/src/output.css">
-  <title>BN Descriptor Search Tool</title>
+  <title>BN Descriptor Finder</title>
 </head>
 
-<body class="bg-gradient-to-r from-[#7160C1] via-[#00A0E0] to-[#00C9B7] text-white">
+<body class="bg-gradient-to-tr from-[#D50000] via-[#CB25B9] to-[#008CFF] text-white">
   <header>
-    <div class="flex justify-between items-center h-16 p-6 w-full max-w-7xl mx-auto">
-      <div class="aspect-square p-2 bg-white rounded-full shadow-xl">
-        <a href="/">
-          <img src="./img/logo-32x32.png" alt="bndesc-finder-logo">
-        </a>
-      </div>
-      <nav class="flex items-center gap-6 text-sm font-semibold">
-        <a class="cursor-pointer py-1 border-b-4 border-transparent hover:border-white transition-all duration-300" href="/">HOME</a>
-        <a class="cursor-pointer py-1 border-b-4 border-transparent hover:border-white transition-all duration-300" onclick="openAboutPage()">ABOUT</a>
-        <a class="cursor-pointer py-1 border-b-4 border-transparent hover:border-white transition-all duration-300" href="https://qrlink-maker.darylandres.com/">QRLINK</a>
+    <div class="relative flex justify-between items-center h-16 px-6 py-10 w-full max-w-7xl mx-auto">
+      <!-- Logo -->
+      <a href="/">
+        <div class="flex items-center gap-2">
+          <img class="w-8 h-auto drop-shadow-lg" src="./img/logo-32x32.png" alt="bn descriptor logo">
+          <div class="font-extrabold text-lg">BnDescFinder</div>
+        </div>
+      </a>
+
+      <!-- Default -->
+      <nav class="hidden items-center gap-4 text-sm font-semibold md:gap-6 md:flex">
+        <a class="cursor-pointer py-1 border-b-4 border-transparent hover:border-white transition-all duration-300" href="#home">HOME</a>
+        <a class="cursor-pointer py-1 border-b-4 border-transparent hover:border-white transition-all duration-300" href="#descriptors">DESCRIPTORS</a>
+        <a class="cursor-pointer py-1 border-b-4 border-transparent hover:border-white transition-all duration-300" onclick="openAboutPage()" tabindex="0">ABOUT</a>
       </nav>
-    </div>
-  </header>
 
-  <div class="container mx-auto px-6 w-full max-w-7xl min-h-svh mt-12">
-    <h1 class="text-center text-4xl font-bold cstm-txt-shadow md:text-5xl">BN DESCRIPTORS</h1>
-    <form class="mt-12 text-[#344B47]" id="search-form" autocomplete="off">
-      <div class="flex flex-col gap-4 items-center w-full md:flex-row">
-        <div class="w-full md:w-2/3 shadow-lg">
-          <input class="w-full px-4 py-2 rounded-md" type="text" name="keyword" id="searchInput" autofocus placeholder="Search...">
+      <!-- Hamburger Menu -->
+      <div onclick="toggleNav()" class="cursor-pointer relative h-5 w-8 items-center md:hidden" tabindex="0">
+        <hr id="hr1" class="absolute top-0 left-0 w-8 rounded-full border-t-2 border-white transition-all duration-300">
+        <hr id="hr2" class="absolute top-1/2 left-0 w-8 rounded-full border-t-2 border-white transition-all duration-300">
+        <hr id="hr3" class="absolute top-full left-0 w-8 rounded-full border-t-2 border-white transition-all duration-300">
+      </div>
+
+      <!-- Mobile Nav -->
+      <div onclick="toggleNav()" id="mobile-nav" class="absolute top-full right-0 translate-x-full flex flex-col bg-gradient-to-tr from-[#CB25B9] to-[#008CFF] shadow-lg w-full text-[#344B47] text-sm font-semibold transition-all duration-300 md:hidden">
+        <a class="cursor-pointer p-3 bg-white hover:bg-transparent hover:text-white transition-all duration-300" href="#home">HOME</a>
+        <a class="cursor-pointer p-3 bg-white hover:bg-transparent hover:text-white transition-all duration-300" href="#descriptors">DESCRIPTORS</a>
+        <a class="cursor-pointer p-3 bg-white hover:bg-transparent hover:text-white transition-all duration-300" onclick="openAboutPage()" tabindex="0">ABOUT</a>
+      </div>
+    </div>
+  </header> 
+
+  <div class="container mx-auto px-6 w-full max-w-7xl">
+    <!-- Hero Section -->
+    <section id="home" class="scroll-mt-28 mt-6 md:mt-0">
+      <div id="home-div" class="flex flex-col w-full gap-0 items-center mt-6 md:flex-row md:mt-0">
+        <div class="flex flex-col h-full justify-start items-start gap-6 w-full text-center md:w-flex-1 md:text-start">
+          <h1 class="text-3xl w-full font-bold cstm-txt-shadow lg:text-5xl md:text-4xl">BN DESCRIPTOR FINDER</h1>
+          <p>Discover and access Business Name Descriptors effortlessly with the BN Descriptor Finder. This user-friendly platform simplifies PSIC Descriptor search, sourced from BNRS. Start searching now!</p>
+          <a onclick="startSearching()" class="px-4 py-2 rounded-lg shadow-lg bg-[#008CFF] w-fit mx-auto font-semibold md:mx-0" href="#descriptors">Get Started</a>
         </div>
-        
-        <div class="w-full shadow-lg md:flex-1">
-          <select class="w-full px-4 py-2 rounded-md" id="select-option" name="select-option">
-            <option selected value="bnValue">BN DESCRIPTOR</option>
-            <option value="class">PSIC CLASS</option>
-            <option value="group">PSIC GROUP</option>
-            <option value="division">PSIC DIVISION</option>
-            <option value="sector">PSIC SECTOR</option>
-          </select>
+        <div class="w-full h-auto md:3/5">
+          <img class="object-cover mix-blend-color-burn" src="./img/hero-image1.jpg" alt="">
         </div>
       </div>
-    </form>
+    </section>
 
-    <div class="mt-6" id="resultCounter"></div>
+    <hr class="mt-6 opacity-75">
 
-    <div class="border-2 border-white rounded-lg shadow-xl mt-6 overflow-x-auto text-sm md:text-base">
-      <table class="w-full text-center" id="psicTable">
-        <thead class="text-[#344B47] bg-white">
-          <tr>
-            <th class="px-4 py-2 rounded-tl-md">DESCRIPTOR</th>
-            <th class="px-4 py-2">PSIC CLASS</th>
-            <th class="px-4 py-2">PSIC GROUP</th>
-            <th class="px-4 py-2">PSIC DIVISION</th>
-            <th class="px-4 py-2 rounded-tr-md">PSIC SECTOR</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="px-4 py-2"></td>
-            <td class="px-4 py-2"></td>
-            <td class="px-4 py-2"></td>
-            <td class="px-4 py-2"></td>
-            <td class="px-4 py-2"></td>
-          </tr>
-          <tr>
-            <td class="px-4 py-2"></td>
-            <td class="px-4 py-2"></td>
-            <td class="px-4 py-2"></td>
-            <td class="px-4 py-2"></td>
-            <td class="px-4 py-2"></td>
-          </tr>
-          <tr>
-            <td class="px-4 py-2"></td>
-            <td class="px-4 py-2"></td>
-            <td class="px-4 py-2"></td>
-            <td class="px-4 py-2"></td>
-            <td class="px-4 py-2"></td>
-          </tr>
-          <tr>
-            <td class="px-4 py-2"></td>
-            <td class="px-4 py-2"></td>
-            <td class="px-4 py-2"></td>
-            <td class="px-4 py-2"></td>
-            <td class="px-4 py-2"></td>
-          </tr>
-          <tr>
-            <td class="px-4 py-2"></td>
-            <td class="px-4 py-2"></td>
-            <td class="px-4 py-2"></td>
-            <td class="px-4 py-2"></td>
-            <td class="px-4 py-2"></td>
-          </tr>
-          <tr>
-            <td class="px-4 py-2"></td>
-            <td class="px-4 py-2"></td>
-            <td class="px-4 py-2"></td>
-            <td class="px-4 py-2"></td>
-            <td class="px-4 py-2"></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <!-- Descriptors Section -->
+    <section id="descriptors" class="flex flex-col justify-between scroll-mt-12 mt-12">
+      <div>
+        <h2 class="text-center text-2xl md:text-3xl font-bold">BUSINESS NAME DESCRIPTORS</h2>
+        <form class="mt-8 text-[#56423D] scroll-mt-8" id="search-form">
+          <div class="flex flex-col gap-4 items-center w-full md:flex-row">
+            <div class="relative w-full md:w-2/3 shadow-lg rounded-md bg-white">
+              <input class="w-full px-4 py-2 rounded-md outline-[#CB25B9]" type="text" name="keyword" id="searchInput" placeholder="Search...">
+              <i id="clear-text" onclick="onClearText()" class="fa-solid fa-xmark hidden absolute right-3 top-1/2 -translate-y-1/2 text-lg"></i>
+            </div>
+            <div class="w-full shadow-lg md:flex-1">
+              <select class="w-full px-4 py-2 rounded-md outline-[#008CFF]" id="select-option" name="select-option">
+                <option selected value="bnValue">BN-DESCRIPTOR</option>
+                <option value="class">PSIC-CLASS</option>
+                <option value="group">PSIC-GROUP</option>
+                <option value="division">PSIC-DIVISION</option>
+                <option value="sector">PSIC-SECTOR</option>
+              </select>
+            </div>
+          </div>
+        </form>
 
-    <div class="text-center mt-6">
-      <p>PSIC Descriptors (as of December 01, 2023)</p>
-      <p>Download the latest here → <a href="https://bnrs.dti.gov.ph/resources/download" target="_blank"><strong>Click me!</strong></a></p>
-    </div>
+        <div class="mt-6 px-4" id="resultCounter"></div>
+
+        <div class="border-2 border-white rounded-lg shadow-xl mt-6 overflow-x-auto text-sm md:text-base">
+          <table class="w-full text-center" id="psicTable">
+            <thead class="text-[#56423D] bg-gradient-to-tr from-[#D50000] via-[#CB25B9] to-[#008CFF]">
+              <tr>
+                <th class="bg-white px-4 py-2 rounded-tl-md">BN-DESCRIPTOR</th>
+                <th class="bg-white px-4 py-2">PSIC-CLASS</th>
+                <th class="bg-white px-4 py-2">PSIC-GROUP</th>
+                <th class="bg-white px-4 py-2">PSIC-DIVISION</th>
+                <th class="bg-white px-4 py-2 rounded-tr-md">PSIC-SECTOR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="px-4 py-2"></td>
+                <td class="px-4 py-2"></td>
+                <td class="px-4 py-2"></td>
+                <td class="px-4 py-2"></td>
+                <td class="px-4 py-2"></td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2"></td>
+                <td class="px-4 py-2"></td>
+                <td class="px-4 py-2"></td>
+                <td class="px-4 py-2"></td>
+                <td class="px-4 py-2"></td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2"></td>
+                <td class="px-4 py-2"></td>
+                <td class="px-4 py-2"></td>
+                <td class="px-4 py-2"></td>
+                <td class="px-4 py-2"></td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2"></td>
+                <td class="px-4 py-2"></td>
+                <td class="px-4 py-2"></td>
+                <td class="px-4 py-2"></td>
+                <td class="px-4 py-2"></td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2"></td>
+                <td class="px-4 py-2"></td>
+                <td class="px-4 py-2"></td>
+                <td class="px-4 py-2"></td>
+                <td class="px-4 py-2"></td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2"></td>
+                <td class="px-4 py-2"></td>
+                <td class="px-4 py-2"></td>
+                <td class="px-4 py-2"></td>
+                <td class="px-4 py-2"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+      <div class="text-center mt-6">
+        <p>PSIC Descriptors (as of December 01, 2023)</p>
+        <p>Download the latest here → <a href="https://bnrs.dti.gov.ph/resources/download" target="_blank"><strong>Click me!</strong></a></p>
+      </div>
+    </section>
   </div>
 
   <!-- Modal: About Page -->
-  <div id="aboutPage-modal" class="hidden fixed top-0 left-0 w-full h-screen bg-gradient-to-r from-[#7160C1] via-[#00A0E0] to-[#00C9B7]">
-    <button type id="aboutPage-option" class="absolute z-50 top-10 right-10" onclick="closeAboutPage()">
+  <div id="aboutPage-modal" class="hidden fixed top-0 left-0 w-full h-screen bg-gradient-to-tr from-[#D50000] via-[#CB25B9] to-[#008CFF]">
+    <button id="aboutPage-option" class="absolute z-50 top-10 right-10 hover:opacity-75" onclick="closeAboutPage()">
       <i class="fa-solid fa-xmark text-3xl"></i>
     </button>
     <div class="max-w-5xl w-full mx-auto h-full flex flex-col gap-4 mt-20 p-6">
       <h3 class="text-xl">
-        Welcome to the <strong>BN Descriptor Search Tool</strong>!
+        Welcome to the <strong>BN Descriptor Finder</strong>!
       </h3>
 
-      <p>This platform is a user-friendly, single-page website created to facilitate users in effortlessly exploring and accessing available Business Name Descriptors at absolutely no cost. It aims to simplify the search process and provide an intuitive interface for individuals seeking PSIC Descriptors.
+      <p>This platform is a user-friendly, single-page website created to facilitate users in effortlessly exploring and accessing available Business Name Descriptors. It aims to simplify the search process and provide an intuitive interface for individuals seeking PSIC Descriptors.
       </p>
 
       <p>
-        Please note that while the <strong>BN Descriptor Search Tool</strong> is independently owned and hosted by <strong>Negosyo Center Business Counselor Daryl Andres</strong>, the data is sourced from the <a href="https://bnrs.dti.gov.ph/" target="_blank">Business Name Registration System (BNRS)</a>. The core dataset used within this tool is extracted from the comprehensive PSIC Descriptors file, accessible for download at <a href="https://bnrs.dti.gov.ph/resources/download" target="_blank">https://bnrs.dti.gov.ph/resources/download</a> via the BNRS platform. 
+        Please note that while the <strong>BN Descriptor Finder</strong> is independently owned and hosted by <strong>Negosyo Center Business Counselor Daryl Andres</strong>, the data is sourced from the <a class="font-semibold" href="https://bnrs.dti.gov.ph/" target="_blank">Business Name Registration System (BNRS)</a>. The core dataset used within this tool is extracted from the comprehensive PSIC Descriptors file, accessible for download at <a class="font-semibold" href="https://bnrs.dti.gov.ph/resources/download" target="_blank">https://bnrs.dti.gov.ph/resources/download</a> via the BNRS platform. 
       </p>
       
       <p>
-        Thank you for using the BN Descriptor Search Tool. Explore, discover, and simplify your search for Business Name Descriptors effortlessly!
+        Thank you for using the BN Descriptor Finder. Explore, discover, and simplify your search for Business Name Descriptors effortlessly!
       </p>
+
+      <button class="w-fit mt-6 hover:opacity-75" onclick="closeAboutPage()"><i class="fa-solid fa-arrow-left-long"></i> Back to Home</button>
     </div>  
   </div>
 
-  <footer class="mt-12 border-t border-white text-sm text-center md:text-start">
-    <div class="flex flex-col justify-between items-center gap-6 p-6 mx-auto max-w-7xl w-full md:flex-row md:items-start">
+  <footer class="mt-12 border-t border-white text-sm text-center md:text-start text-gray-200">
+    <div class="flex flex-col items-center gap-12 p-10 mx-auto max-w-7xl w-full md:flex-row md:items-start md:gap-16">
       <div class="flex flex-col gap-2">
-        <p><strong>Relevant Links:</strong></p>
-        <a class="relevant-link" href="https://bnrs.dti.gov.ph/">BNRS</a>
-        <a class="relevant-link" href="https://bmbe.dti.gov.ph/">BMBE Official Site</a>
+        <div><strong>Navigation:</strong></div>
+        <a class="hover:text-white" href="#home">Home</a>
+        <a class="hover:text-white" href="#descriptors">Descriptors</a>
+        <a class="hover:text-white cursor-pointer" tabindex="0"onclick="openAboutPage()">About</a>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <div><strong>Helpful links:</strong></div>
+        <a class="hover:text-white" href="https://bnrs.dti.gov.ph/" target="_blank">BNRS</a>
+        <a class="hover:text-white" href="https://bmbe.dti.gov.ph/" target="_blank">BMBE Official Site</a>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <div><strong>Other Web Apps:</strong></div>
+        <a class="hover:text-white" href="https://qrlink-maker.darylandres.com/" target="_blank">QRLink</a>
+        <a class="hover:text-white" href="https://wonderful-bay-090b91c00.4.azurestaticapps.net/" target="_blank">Business Directory</a>
       </div>
       
-      <div class="flex flex-col gap-2">
-        <p>&copy; 2023-2024 BN Descriptor Search Tool</p>
+    </div>
+    <div class="bg-[rgba(255,255,255,0.2)] text-white">
+      <div class="flex flex-col justify-between gap-2 items-center p-6 max-w-7xl mx-auto w-full md:flex-row">
+        <p><strong>Copyright &copy; 2024 BnDescFinder.</strong> All rights reserved.</p>
         <p class="version">Version: <strong>1.2.0</strong></p>
       </div>
     </div>

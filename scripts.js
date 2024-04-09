@@ -5,16 +5,20 @@ const psicTable = document.querySelector("#psicTable");
 const thElement = psicTable.querySelectorAll("th");
 const resultCounter = document.querySelector("#resultCounter");
 const aboutPageModal = document.querySelector("#aboutPage-modal");
+const clearText = document.querySelector("#clear-text");
+const container = document.querySelector(".container");
 
 let prevActiveTH = null
 let searchTimeout;
 
 function closeAboutPage() {
     aboutPageModal.classList.add("hidden");
+    container.classList.remove("hidden");
 }
 
 function openAboutPage() {
     aboutPageModal.classList.remove("hidden");
+    container.classList.add("hidden");
 }
 
 async function fetchDescriptors() {
@@ -56,8 +60,17 @@ function deleteExistingTbody(tbody) {
 }
 
 async function handleInput() {
-    // Transform the input text to uppercase first.
     inputElement.value = inputElement.value.toUpperCase();
+
+    if (inputElement.value !== '') {
+        clearText.classList.remove("hidden");
+    } else {
+        clearText.classList.add("hidden");
+    }
+
+    if (inputElement.value.trim() === '') {
+        return;
+    }
 
     const reconstructedDescriptors = await changeKeyName();
     const selectedOption = select.value;
@@ -91,9 +104,11 @@ function highlightActiveHeader() {
     const activeTH = Array.from(thElement).find(th => th.textContent === selectedOptionText);
     if (activeTH) {
         if (prevActiveTH) {
-            prevActiveTH.classList.remove("active-header");
+            prevActiveTH.classList.remove("font-bold", "text-white");
+            prevActiveTH.classList.add("bg-white");
         }
-        activeTH.classList.add("active-header");
+        activeTH.classList.add("font-bold", "text-white");
+        activeTH.classList.remove("bg-white");
         prevActiveTH = activeTH;
     }
 }
@@ -101,15 +116,14 @@ function highlightActiveHeader() {
 function highlightActiveCells(select, tbody) {
     const selectedOptionIndex = select.selectedIndex;
 
-    // Highlight the text of the active table data
     const rows = tbody.querySelectorAll(".result-row");
     rows.forEach(row => {
         const td = row.querySelectorAll("td");
         td.forEach((cell, index) => {
             if (index === selectedOptionIndex) {
-                cell.classList.add("active-column");
+                cell.classList.add("font-semibold", "bg-[rgba(255,255,255,0.1)]");
             } else {
-                cell.classList.remove("active-column");
+                cell.classList.remove("font-semibold", "bg-[rgba(255,255,255,0.1)]");
             }
         });
     });
@@ -157,6 +171,49 @@ function scrollToResults() {
     searchForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
+function onClearText() {
+    if (inputElement.value !== '') {
+        inputElement.value = '';
+        clearText.classList.add("hidden");
+    }
+}
+
+let isMenuClicked = false;
+function toggleNav() {
+    isMenuClicked = !isMenuClicked
+
+    const hr1 = document.querySelector("#hr1");
+    const hr2 = document.querySelector("#hr2");
+    const hr3 = document.querySelector("#hr3");
+    const mobileNav = document.querySelector("#mobile-nav");
+
+    if (isMenuClicked) {
+        hr1.classList.add("rotate-[40deg]", "top-1/2");
+        hr2.classList.add("opacity-0");
+        hr3.classList.add("-rotate-[40deg]", "top-1/2");
+        hr1.classList.remove("top-0");
+        hr3.classList.remove("top-full");
+        mobileNav.classList.remove("translate-x-full");
+        mobileNav.classList.add("translate-x-0");
+    } else {
+        hr1.classList.remove("rotate-[40deg]", "top-1/2");
+        hr2.classList.remove("opacity-0");
+        hr3.classList.remove("-rotate-[40deg]", "top-1/2");
+        hr1.classList.add("top-0");
+        hr3.classList.add("top-full");
+        mobileNav.classList.add("translate-x-full");
+        mobileNav.classList.remove("translate-x-0");
+    }
+}
+
+function startSearching() {
+    console.log("it works!")
+    setTimeout(() => {
+        inputElement.focus();
+    }, 300);
+}
+
 searchForm.addEventListener("input", handleInput);
+inputElement.addEventListener("click", function() {this.select()})
 
 window.addEventListener("submit", e => e.preventDefault());

@@ -1,3 +1,14 @@
+::selection {
+    background-color: palevioletred;
+    color: white;
+}
+
+
+html, body {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
 .cstm-txt-shadow {
     text-shadow: 2px 3px 0px #344B47;
 }
@@ -8,4 +19,14 @@ table {
 
 tbody tr:nth-child(even) {
     background-color: rgba(0,0,0,0.1);
+}
+
+#home-div {  
+    min-height: calc(100vh - 4rem);
+    min-height: calc(100svh - 4rem);
+}
+
+#descriptors {  
+    min-height: calc(100vh - 3rem);
+    min-height: calc(100svh - 3rem);
 }
