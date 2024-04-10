@@ -14,56 +14,60 @@
   <!-- For medium screens (32x32 pixels) -->
   <link rel="icon" type="image/png" href="./favicon/favicon-32x32.png" sizes="32x32">
   <!-- Default favicon -->
-  <link rel="icon" type="image/png" href="./favicon/favicon.png">
+  <link rel="icon" type="image/png" href="./favicon/favicon.ico">
   <link rel="stylesheet" href="/src/output.css">
   <title>BN Descriptor Finder</title>
 </head>
 
-<body class="bg-gradient-to-tr from-[#8b0000] via-[#CB25B9] to-[#008CFF] text-white">
+<body class="bg-gradient-to-tr from-[#8b0000] via-[#CB25B9] to-[#008CFF] text-white text-sm sm:text-base">
   <header>
     <div class="relative flex justify-between items-center h-16 px-6 py-10 w-full max-w-7xl mx-auto">
       <!-- Logo -->
       <a href="/">
         <div class="flex items-center gap-2">
           <img class="w-8 h-auto drop-shadow-lg" src="./img/logo-32x32.png" alt="bn descriptor logo">
-          <div class="font-extrabold text-lg">BnDescFinder</div>
+          <div class="font-extrabold text-lg">BNDescFinder</div>
         </div>
-      </a>
+      </a>  
 
       <!-- Default -->
-      <nav class="hidden items-center gap-4 text-sm font-semibold md:gap-6 md:flex">
-        <a class="py-1 border-b-4 border-transparent hover:border-white transition-all duration-300" href="#home">HOME</a>
-        <a class="py-1 border-b-4 border-transparent hover:border-white transition-all duration-300" href="#descriptors">DESCRIPTORS</a>
-        <a class="py-1 border-b-4 border-transparent hover:border-white transition-all duration-300" href="#about" onclick="openAboutPage()">ABOUT</a>
+      <nav class="hidden items-center gap-4 text-xs font-semibold md:gap-6 md:flex sm:text-sm">
+        <a class="py-1 border-b-4 border-transparent hover:border-white transition-all duration-500" href="#home">HOME</a>
+        <a class="py-1 border-b-4 border-transparent hover:border-white transition-all duration-500" href="#descriptors">DESCRIPTORS</a>
+        <a class="py-1 border-b-4 border-transparent hover:border-white transition-all duration-500" href="#about" onclick="openAboutPage()">ABOUT</a>
       </nav>
 
       <!-- Hamburger Menu -->
       <div onclick="toggleNav()" class="cursor-pointer relative h-5 w-8 items-center md:hidden" tabindex="0">
-        <hr id="hr1" class="absolute top-0 left-0 w-8 rounded-full border-t-2 border-white transition-all duration-300">
-        <hr id="hr2" class="absolute top-1/2 left-0 w-8 rounded-full border-t-2 border-white transition-all duration-300">
-        <hr id="hr3" class="absolute top-full left-0 w-8 rounded-full border-t-2 border-white transition-all duration-300">
+        <hr id="hr1" class="absolute top-0 left-0 w-8 rounded-full border-t-2 border-white transition-all duration-500">
+        <hr id="hr2" class="absolute top-1/2 left-0 w-8 rounded-full border-t-2 border-white transition-all duration-500">
+        <hr id="hr3" class="absolute top-full left-0 w-8 rounded-full border-t-2 border-white transition-all duration-500">
       </div>
 
       <!-- Mobile Nav -->
-      <div onclick="toggleNav()" id="mobile-nav" class="absolute top-full right-0 translate-x-full flex flex-col bg-gradient-to-tr from-[#CB25B9] to-[#008CFF] shadow-lg w-full text-[#344B47] text-sm font-semibold transition-all duration-300 md:hidden">
-        <a class="p-3 bg-white hover:bg-transparent hover:text-white transition-all duration-300" href="#home">HOME</a>
-        <a class="p-3 bg-white hover:bg-transparent hover:text-white transition-all duration-300" href="#descriptors">DESCRIPTORS</a>
-        <a class="p-3 bg-white hover:bg-transparent hover:text-white transition-all duration-300" href="#about" onclick="openAboutPage()">ABOUT</a>
+      <div onclick="toggleNav()" id="mobile-nav" class="absolute top-full right-0 translate-x-full flex flex-col bg-gradient-to-tr from-[#CB25B9] to-[#008CFF] shadow-lg w-full text-[#344B47] text-xs font-semibold transition-all duration-500 md:hidden sm:text-sm">
+        <a class="p-3 bg-white hover:bg-transparent hover:text-white transition-all duration-500" href="#home">HOME</a>
+        <a class="p-3 bg-white hover:bg-transparent hover:text-white transition-all duration-500" href="#descriptors">DESCRIPTORS</a>
+        <a class="p-3 bg-white hover:bg-transparent hover:text-white transition-all duration-500" href="#about" onclick="openAboutPage()">ABOUT</a>
       </div>
     </div>
   </header> 
 
   <div class="container mx-auto px-6 w-full max-w-7xl">
     <!-- Hero Section -->
-    <section id="home" class="scroll-mt-28 mt-6 md:mt-0">
-      <div id="home-div" class="flex flex-col w-full gap-0 items-center mt-6 md:flex-row md:mt-0">
-        <div class="flex flex-col h-full justify-start items-start gap-6 w-full text-center md:w-flex-1 md:text-start">
+    <section id="home" class="scroll-mt-28 mt-6 lg:mt-0">
+      <div id="home-div" class="flex flex-col w-full items-center mt-6 lg:flex-row lg:mt-0">
+        <div class="flex flex-col h-full justify-start items-start gap-6 w-full text-center lg:w-1/2 lg:text-start">
           <h1 class="text-3xl w-full font-bold cstm-txt-shadow lg:text-5xl md:text-4xl">BN DESCRIPTOR FINDER</h1>
-          <p>Discover and access Business Name Descriptors effortlessly with the BN Descriptor Finder. This user-friendly platform simplifies PSIC Descriptor search, sourced from BNRS. Start searching now!</p>
-          <a onclick="startSearching()" class="px-4 py-2 rounded-lg shadow-lg bg-[#008CFF] w-fit mx-auto font-semibold md:mx-0" href="#descriptors">Get Started</a>
+          <p>
+            Discover and access Business Name Descriptors effortlessly with the BN Descriptor Finder. 
+            This user-friendly platform simplifies PSIC Descriptor search, sourced from BNRS, enabling you to know the registrable line or nature of your business with ease. 
+            Start searching now!
+          </p>
+          <a onclick="startSearching()" class="border border-transparent px-4 py-2 rounded-lg shadow-lg bg-[#008CFF] w-fit mx-auto font-semibold hover:bg-inherit hover:border-white lg:mx-0 transition-all duration-500" href="#descriptors">Get Started</a>
         </div>
-        <div class="w-full h-auto md:3/5">
-          <img class="object-cover mix-blend-color-burn" src="./img/hero-image1.jpg" alt="man that is searching">
+        <div class="w-full h-auto lg:flex-1">
+          <img class="object-cover mix-blend-color-burn" src="./img/hero-image.jpg" alt="man that is searching">
         </div>
       </div>
     </section>
@@ -73,7 +77,7 @@
     <!-- Descriptors Section -->
     <section id="descriptors" class="flex flex-col justify-between scroll-mt-12 mt-12">
       <div>
-        <h2 class="text-center text-2xl md:text-3xl font-bold">BUSINESS NAME DESCRIPTORS</h2>
+        <h2 class="text-center font-bold text-xl md:text-3xl sm:text-2xl">BUSINESS NAME DESCRIPTORS</h2>
         <form class="mt-8 text-[#56423D] scroll-mt-8" id="search-form">
           <div class="flex flex-col gap-4 items-center w-full md:flex-row">
             <div class="relative w-full md:w-2/3 shadow-lg rounded-md bg-white">
@@ -94,9 +98,9 @@
 
         <div class="mt-6 px-4" id="resultCounter"></div>
 
-        <div class="border-2 border-white rounded-lg shadow-xl mt-6 overflow-x-auto text-sm md:text-base">
+        <div class="border-2 border-white rounded-lg shadow-xl mt-6 overflow-y-auto overflow-x-scroll min-h-48 max-h-screen text-xs md:text-base sm:text-sm">
           <table class="w-full text-center" id="psicTable">
-            <thead class="text-[#56423D] bg-gradient-to-tr from-[#8b0000] via-[#CB25B9] to-[#008CFF]">
+            <thead class="sticky top-0 text-[#56423D] bg-gradient-to-tr from-[#8b0000] via-[#CB25B9] to-[#008CFF]">
               <tr>
                 <th class="bg-white px-4 py-2 rounded-tl-md">BN-DESCRIPTOR</th>
                 <th class="bg-white px-4 py-2">PSIC-CLASS</th>
@@ -107,46 +111,46 @@
             </thead>
             <tbody>
               <tr>
-                <td class="px-4 py-2"></td>
-                <td class="px-4 py-2"></td>
-                <td class="px-4 py-2"></td>
-                <td class="px-4 py-2"></td>
-                <td class="px-4 py-2"></td>
+                <td class="py-4"></td>
+                <td class="py-4"></td>
+                <td class="py-4"></td>
+                <td class="py-4"></td>
+                <td class="py-4"></td>
               </tr>
               <tr>
-                <td class="px-4 py-2"></td>
-                <td class="px-4 py-2"></td>
-                <td class="px-4 py-2"></td>
-                <td class="px-4 py-2"></td>
-                <td class="px-4 py-2"></td>
+                <td class="py-4"></td>
+                <td class="py-4"></td>
+                <td class="py-4"></td>
+                <td class="py-4"></td>
+                <td class="py-4"></td>
               </tr>
               <tr>
-                <td class="px-4 py-2"></td>
-                <td class="px-4 py-2"></td>
-                <td class="px-4 py-2"></td>
-                <td class="px-4 py-2"></td>
-                <td class="px-4 py-2"></td>
+                <td class="py-4"></td>
+                <td class="py-4"></td>
+                <td class="py-4"></td>
+                <td class="py-4"></td>
+                <td class="py-4"></td>
               </tr>
               <tr>
-                <td class="px-4 py-2"></td>
-                <td class="px-4 py-2"></td>
-                <td class="px-4 py-2"></td>
-                <td class="px-4 py-2"></td>
-                <td class="px-4 py-2"></td>
+                <td class="py-4"></td>
+                <td class="py-4"></td>
+                <td class="py-4"></td>
+                <td class="py-4"></td>
+                <td class="py-4"></td>
               </tr>
               <tr>
-                <td class="px-4 py-2"></td>
-                <td class="px-4 py-2"></td>
-                <td class="px-4 py-2"></td>
-                <td class="px-4 py-2"></td>
-                <td class="px-4 py-2"></td>
+                <td class="py-4"></td>
+                <td class="py-4"></td>
+                <td class="py-4"></td>
+                <td class="py-4"></td>
+                <td class="py-4"></td>
               </tr>
               <tr>
-                <td class="px-4 py-2"></td>
-                <td class="px-4 py-2"></td>
-                <td class="px-4 py-2"></td>
-                <td class="px-4 py-2"></td>
-                <td class="px-4 py-2"></td>
+                <td class="py-4"></td>
+                <td class="py-4"></td>
+                <td class="py-4"></td>
+                <td class="py-4"></td>
+                <td class="py-4"></td>
               </tr>
             </tbody>
           </table>
@@ -155,8 +159,12 @@
       </div>
 
       <div class="text-center mt-6">
-        <p>PSIC Descriptors (as of December 01, 2023)</p>
-        <p>Download the latest here → <a href="https://bnrs.dti.gov.ph/resources/download" target="_blank"><strong>Click me!</strong></a></p>
+        <p>PSIC Descriptors (as of March 06, 2023)</p>
+        <p class="text-sm italic sm:text-sm">
+          You can download the latest version here → 
+          <a class="font-bold hover:underline" href="https://dtibnrs.s3-ap-southeast-1.amazonaws.com/files/20240322/qtpoaytgak1015.xlsx" target="_blank">Click Me</a> or visit 
+          <a class="font-bold hover:underline break-words" href="https://bnrs.dti.gov.ph/resources/download" target="_blank">https://bnrs.dti.gov.ph/resources/download</a>.
+        </p>        
       </div>
     </section>
   </div>
@@ -164,10 +172,10 @@
   <!-- Modal: About Page -->
   <div id="about" class="hidden fixed top-0 left-0 w-full h-screen bg-gradient-to-tr from-[#8b0000] via-[#CB25B9] to-[#008CFF]">
     <button id="aboutPage-option" class="absolute z-50 top-10 right-10 hover:opacity-75" onclick="closeAboutPage()">
-      <i class="fa-solid fa-xmark text-3xl"></i>
+      <i class="fa-solid fa-xmark text-2xl md:text-3xl"></i>
     </button>
     <div class="max-w-5xl w-full mx-auto h-full flex flex-col gap-4 mt-20 p-6">
-      <h3 class="text-xl">
+      <h3 class="text-lg sm:text-xl">
         Welcome to the <strong>BN Descriptor Finder</strong>!
       </h3>
 
@@ -175,7 +183,7 @@
       </p>
 
       <p>
-        Please note that while the <strong>BN Descriptor Finder</strong> is independently owned and hosted by <strong>Negosyo Center Business Counselor Daryl Andres</strong>, the data is sourced from the <a class="font-semibold" href="https://bnrs.dti.gov.ph/" target="_blank">Business Name Registration System (BNRS)</a>. The core dataset used within this tool is extracted from the comprehensive PSIC Descriptors file, accessible for download at <a class="font-semibold" href="https://bnrs.dti.gov.ph/resources/download" target="_blank">https://bnrs.dti.gov.ph/resources/download</a> via the BNRS platform. 
+        Please note that while the BN Descriptor Finder is independently owned and hosted by <a class="font-bold hover:underline" href="https://darylandres.com/" target="_blank">NCBC Daryl Andres</a>, the data is sourced from the <a class="font-semibold hover:underline" href="https://bnrs.dti.gov.ph/" target="_blank">Business Name Registration System (BNRS)</a>. The core dataset used within this tool is extracted from the comprehensive PSIC Descriptors file, accessible for download at <a class="font-semibold hover:underline" href="https://bnrs.dti.gov.ph/resources/download" target="_blank">https://bnrs.dti.gov.ph/resources/download</a> via the BNRS platform. 
       </p>
       
       <p>
@@ -186,7 +194,7 @@
     </div>  
   </div>
 
-  <footer class="mt-12 border-t border-white text-sm text-center md:text-start text-gray-200">
+  <footer class="mt-12 border-t border-white text-xs text-center md:text-start text-gray-200 sm:text-sm">
     <div class="flex flex-col items-center gap-12 p-10 mx-auto max-w-7xl w-full md:flex-row md:items-start md:gap-16">
       <div class="flex flex-col gap-2">
         <div><strong>Navigation:</strong></div>
@@ -196,22 +204,22 @@
       </div>
 
       <div class="flex flex-col gap-2">
-        <div><strong>Helpful links:</strong></div>
-        <a class="hover:text-white" href="https://bnrs.dti.gov.ph/" target="_blank">BNRS</a>
-        <a class="hover:text-white" href="https://bmbe.dti.gov.ph/" target="_blank">BMBE Official Site</a>
-      </div>
-
-      <div class="flex flex-col gap-2">
         <div><strong>Other Web Apps:</strong></div>
         <a class="hover:text-white" href="https://qrlink-maker.darylandres.com/" target="_blank">QRLink</a>
         <a class="hover:text-white" href="https://wonderful-bay-090b91c00.4.azurestaticapps.net/" target="_blank">Business Directory</a>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <div><strong>Helpful links:</strong></div>
+        <a class="hover:text-white" href="https://bnrs.dti.gov.ph/" target="_blank">BNRS</a>
+        <a class="hover:text-white" href="https://bmbe.dti.gov.ph/" target="_blank">BMBE Official Site</a>
       </div>
       
     </div>
     <div class="bg-[rgba(255,255,255,0.2)] text-white">
       <div class="flex flex-col justify-between gap-2 items-center p-6 max-w-7xl mx-auto w-full md:flex-row">
-        <p><strong>Copyright &copy; 2024 BnDescFinder.</strong> All rights reserved.</p>
-        <p class="version">Version: <strong>1.2.2</strong></p>
+        <p><strong>Copyright &copy; 2024 BNDescFinder.</strong> All rights reserved.</p>
+        <p class="version">Version: <strong>1.2.3</strong></p>
       </div>
     </div>
   </footer>
