@@ -1,5 +1,5 @@
 ::selection {
-    background-color: palevioletred;
+    background-color: #00C9B7;
     color: white;
 }
 
@@ -29,4 +29,8 @@ tbody tr:nth-child(even) {
 #descriptors {  
     min-height: calc(100vh - 3rem);
     min-height: calc(100svh - 3rem);
+}
+
+.cstm-txt-shadow {
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
 }

@@ -104,10 +104,10 @@ function highlightActiveHeader() {
     const activeTH = Array.from(thElement).find(th => th.textContent === selectedOptionText);
     if (activeTH) {
         if (prevActiveTH) {
-            prevActiveTH.classList.remove("font-bold", "text-white");
+            prevActiveTH.classList.remove("font-bold", "text-white", "cstm-txt-shadow");
             prevActiveTH.classList.add("bg-white");
         }
-        activeTH.classList.add("font-bold", "text-white");
+        activeTH.classList.add("font-bold", "text-white", "cstm-txt-shadow");
         activeTH.classList.remove("bg-white");
         prevActiveTH = activeTH;
     }
@@ -121,9 +121,9 @@ function highlightActiveCells(select, tbody) {
         const td = row.querySelectorAll("td");
         td.forEach((cell, index) => {
             if (index === selectedOptionIndex) {
-                cell.classList.add("font-semibold", "bg-[rgba(255,255,255,0.1)]");
+                cell.classList.add("font-semibold", "bg-[rgba(255,255,255,0.1)]", "cstm-txt-shadow");
             } else {
-                cell.classList.remove("font-semibold", "bg-[rgba(255,255,255,0.1)]");
+                cell.classList.remove("font-semibold", "bg-[rgba(255,255,255,0.1)]", "cstm-txt-shadow");
             }
         });
     });
@@ -210,6 +210,11 @@ function startSearching() {
     setTimeout(() => {
         inputElement.focus();
     }, 300);
+}
+
+
+if (window.location.hash === "#about" || window.location.hash === "index.html#about") {
+    openAboutPage();
 }
 
 searchForm.addEventListener("input", handleInput);
