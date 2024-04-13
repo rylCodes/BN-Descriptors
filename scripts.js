@@ -4,27 +4,159 @@ const select = document.querySelector("[name='select-option']");
 const psicTable = document.querySelector("#psicTable");
 const thElement = psicTable.querySelectorAll("th");
 const resultCounter = document.querySelector("#resultCounter");
-const aboutPageModal = document.querySelector("#about");
+const aboutPage = document.querySelector("#about");
+const faqsPage = document.querySelector("#faqs");
 const clearText = document.querySelector("#clear-text");
 const container = document.querySelector(".container");
+const questionDiv = document.querySelector("#questions-div");
+const mobileNav = document.querySelector("#mobile-nav");
 
 let prevActiveTH = null
 let searchTimeout;
 
+// About Page Functions
 function closeAboutPage() {
-    aboutPageModal.classList.add("hidden");
+    aboutPage.classList.add("hidden");
     container.classList.remove("hidden");
+    mobileNav.classList.remove("hidden");
 }
 
 function openAboutPage() {
-    aboutPageModal.classList.remove("hidden");
+    aboutPage.classList.remove("hidden");
     container.classList.add("hidden");
+    mobileNav.classList.add("hidden");
+}
+
+// Faqs Page Functions
+function closeFaqsPage() {
+    faqsPage.classList.add("hidden");
+    container.classList.remove("hidden");
+    mobileNav.classList.remove("hidden");
+}
+
+async function openFaqsPage() {
+    faqsPage.classList.remove("hidden");
+    container.classList.add("hidden");
+    mobileNav.classList.add("hidden");
+    await initializeFaqs();
+}
+
+let faqs;
+
+function toggleAnswer(e) {
+    const index = e.currentTarget.dataset.index;
+    const icon1 = document.querySelectorAll('.icon1')[index];
+    const icon2 = document.querySelectorAll('.icon2')[index];
+    const answer = document.querySelectorAll('.answer')[index];
+    const question = document.querySelectorAll('.question')[index];
+    const questionText = document.querySelectorAll('.question-text')[index];
+
+
+    const faq = faqs[index]
+    faq.isActive = !faq.isActive;
+    
+    if (faq.isActive) {
+        icon1.classList.add("hidden");
+        icon2.classList.remove("hidden", "group-hover:text-white");
+        icon2.classList.add("text-white");
+        answer.classList.add("flex");
+        answer.classList.remove("hidden");
+        question.classList.add("bg-[#9A338E]", "text-white");
+        question.classList.remove("hover:bg-[#00B6D0]", "hover:text-white", "bg-white");
+        questionText.classList.remove("text-[#344B47]");
+    } else {
+        icon1.classList.remove("hidden");
+        icon2.classList.add("hidden", "group-hover:text-white");
+        icon2.classList.remove("text-white");
+        answer.classList.remove("flex");
+        answer.classList.add("hidden");
+        question.classList.remove("bg-[#9A338E]", "text-white");
+        question.classList.add("hover:bg-[#00B6D0]", "hover:text-white", "bg-white");
+        questionText.classList.add("text-[#344B47]");
+    }
+}
+
+async function displayFaqs() {
+    const html = await faqs.map((faq, index) => `
+        <div tabindex="0" class="border border-white shadow-lg">
+            <div data-index="${index}" class="question flex justify-between items-center gap-2 w-full px-4 py-2 cursor-pointer group border-transparent bg-white hover:bg-[#00B6D0] transition-all duration-500">
+                <p class="question-text text-[#344B47] text-xs group-hover:text-white sm:text-base transition-all duration-500">
+                    ${faq.question}
+                </p>
+                <i class="icon1 fa-solid fa-circle-plus text-[#00B6D0] group-hover:text-white text-xl transition-all duration-500"></i>
+                <i class="icon2 hidden fa-solid fa-circle-minus text-[#9A338E] group-hover:text-white text-xl transition-all duration-500"></i>
+            </div>
+            <div class="answer hidden justify-between items-center w-full px-4 py-2">
+                <p class="text-xs group-hover:text-white sm:text-base transition-all duration-500">
+                    ${faq.answer}
+                </p>
+            </div>
+        </div>
+    `);
+
+    questionDiv.innerHTML = html.join("");
+
+    const questions = document.querySelectorAll(".question");
+    questions.forEach(question => {
+        question.addEventListener("click", toggleAnswer)
+    });
+    questions.forEach(question => {
+        question.addEventListener("keyup", (e) => {
+            if (e.key === "Enter") {
+                toggleAnswer(e);
+            }
+        });
+    });
+}
+
+async function initializeFaqs() {
+    const selectCategory = document.querySelector("[name='select-category']");
+    const removeFilter = document.querySelector("#remove-filter");
+    const filterIndicator = document.querySelector("#filter-indicator");
+    selectCategory.value = '';
+
+    if (!removeFilter.classList.contains("hidden") && !filterIndicator.classList.contains("hidden")) {
+        removeFilter.classList.add("hidden");
+        filterIndicator.classList.add("hidden");
+    };
+
+    faqs = await fetchFaqs();
+
+    selectCategory.addEventListener("change", async function() {
+        faqs = await fetchFaqs();
+
+        if (selectCategory.value) {
+            removeFilter.classList.remove("hidden");
+            filterIndicator.classList.remove("hidden");
+            faqs =  faqs.filter(faq => faq.category === selectCategory.value);
+            await displayFaqs();
+        } else {
+            removeFilter.classList.add("hidden");
+            await displayFaqs();
+        }
+    });
+
+    removeFilter.addEventListener("click", async function() {
+        faqs = await fetchFaqs();
+        await displayFaqs();
+        removeFilter.classList.add("hidden");
+        filterIndicator.classList.add("hidden");
+        selectCategory.value = '';
+    });
+
+    await displayFaqs();
 }
 
 async function fetchDescriptors() {
-    const response = await fetch("./bnDescriptors.json");
+    const response = await fetch("./data/bnDescriptors.json");
     const descriptors = await response.json();
     return descriptors;
+}
+
+async function fetchFaqs() {
+    const response = await fetch("./data/faqs.json");
+    const faqs = await response.json();
+    return faqs;
 }
 
 async function changeKeyName() {
@@ -149,7 +281,7 @@ async function filterByKeyword(array, keyword, option) {
 async function displayResults(array, keyword, option) {
     const filteredArr = await filterByKeyword(array, keyword, option);
 
-    const html = await filteredArr.map((item, index) =>
+    const html = await filteredArr.map((item) =>
         `<tr class=result-row>
           <td class="px-2 py-1">${item.bnValue}</td>
           <td class="px-2 py-1">${item.class}</td>
@@ -185,7 +317,6 @@ function toggleNav() {
     const hr1 = document.querySelector("#hr1");
     const hr2 = document.querySelector("#hr2");
     const hr3 = document.querySelector("#hr3");
-    const mobileNav = document.querySelector("#mobile-nav");
 
     if (isMenuClicked) {
         hr1.classList.add("rotate-[40deg]", "top-1/2");
@@ -212,10 +343,13 @@ function startSearching() {
     }, 300);
 }
 
-
 if (window.location.hash === "#about" || window.location.hash === "index.html#about") {
     openAboutPage();
 }
+
+if (window.location.hash === "#faqs" || window.location.hash === "index.html#faqs") {
+    openFaqsPage();
+};
 
 searchForm.addEventListener("input", handleInput);
 inputElement.addEventListener("click", function() {this.select()})

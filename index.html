@@ -19,47 +19,52 @@
   <title>BNDescFinder</title>
 </head>
 
-<body class="bg-gradient-to-tr from-[#00B6D0] via-[#0083DD] to-[#9A338E] text-white text-sm sm:text-base">
-  <header>
-    <div class="relative flex justify-between items-center h-16 px-6 py-10 w-full max-w-7xl mx-auto">
-      <!-- Logo -->
-      <a href="/">
-        <div class="flex items-center gap-2">
-          <div class="size-8 shadow-md rounded-md bg-white">
-            <img class="object-cover" src="./img/logo-64x64.png" alt="bn descriptor logo">
+<body class="relative bg-gradient-to-tr from-[#00B6D0] via-[#0083DD] to-[#9A338E] text-white text-sm sm:text-base">
+  <!-- Mobile Nav -->
+  <div onclick="toggleNav()" id="mobile-nav"
+       class="z-30 absolute top-20 right-0 translate-x-full flex flex-col bg-gradient-to-tr from-[#0083DD] to-[#9A338E] shadow-lg w-full text-[#344B47] text-xs font-semibold transition-all duration-500 md:hidden sm:text-sm">
+    <a class="p-3 bg-white hover:bg-transparent hover:text-white transition-all duration-500" href="#home">HOME</a>
+    <a class="p-3 bg-white hover:bg-transparent hover:text-white transition-all duration-500" href="#descriptors">DESCRIPTORS</a>
+    <a class="p-3 bg-white hover:bg-transparent hover:text-white transition-all duration-500" href="#faqs" onclick="openFaqsPage()">FAQS</a>
+    <a class="p-3 bg-white hover:bg-transparent hover:text-white transition-all duration-500" href="#about" onclick="openAboutPage()">ABOUT</a>
+  </div>
+  
+  <!-- MAIN CONTAINER: Home and Descriptors Section -->
+  <div class="relative container mx-auto w-full max-w-7xl">
+    <!-- Header -->
+    <header>
+      <div class="absolute top-0 left-0 flex justify-between items-center h-20 w-full max-w-7xl mx-auto px-6">
+        <!-- Logo -->
+        <a href="/">
+          <div class="flex items-center gap-2">
+            <div class="size-8 shadow-md rounded-md bg-white">
+              <img class="object-cover" src="./img/logo-64x64.png" alt="bn descriptor logo">
+            </div>
+            <div class="cstm-txt-shadow font-extrabold text-lg">BNDescFinder</div>
           </div>
-          <div class="cstm-txt-shadow font-extrabold text-lg">BNDescFinder</div>
+        </a>  
+  
+        <!-- Default -->
+        <nav class="hidden items-center gap-4 text-xs font-semibold cstm-txt-shadow md:gap-6 md:flex sm:text-sm">
+          <a class="py-1 border-b-4 border-transparent hover:border-white transition-all duration-500" href="#home">HOME</a>
+          <a class="py-1 border-b-4 border-transparent hover:border-white transition-all duration-500" href="#descriptors">DESCRIPTORS</a>
+          <a class="py-1 border-b-4 border-transparent hover:border-white transition-all duration-500" href="#faqs" onclick="openFaqsPage()">FAQS</a>
+          <a class="py-1 border-b-4 border-transparent hover:border-white transition-all duration-500" href="#about" onclick="openAboutPage()">ABOUT</a>
+        </nav>
+  
+        <!-- Hamburger Menu -->
+        <div onclick="toggleNav()" class="cursor-pointer relative h-5 w-8 items-center md:hidden" tabindex="0">
+          <hr id="hr1" class="absolute top-0 left-0 w-8 rounded-full border-t-2 border-white transition-all duration-500">
+          <hr id="hr2" class="absolute top-1/2 left-0 w-8 rounded-full border-t-2 border-white transition-all duration-500">
+          <hr id="hr3" class="absolute top-full left-0 w-8 rounded-full border-t-2 border-white transition-all duration-500">
         </div>
-      </a>  
-
-      <!-- Default -->
-      <nav class="hidden items-center gap-4 text-xs font-semibold cstm-txt-shadow md:gap-6 md:flex sm:text-sm">
-        <a class="py-1 border-b-4 border-transparent hover:border-white transition-all duration-500" href="#home">HOME</a>
-        <a class="py-1 border-b-4 border-transparent hover:border-white transition-all duration-500" href="#descriptors">DESCRIPTORS</a>
-        <a class="py-1 border-b-4 border-transparent hover:border-white transition-all duration-500" href="#about" onclick="openAboutPage()">ABOUT</a>
-      </nav>
-
-      <!-- Hamburger Menu -->
-      <div onclick="toggleNav()" class="cursor-pointer relative h-5 w-8 items-center md:hidden" tabindex="0">
-        <hr id="hr1" class="absolute top-0 left-0 w-8 rounded-full border-t-2 border-white transition-all duration-500">
-        <hr id="hr2" class="absolute top-1/2 left-0 w-8 rounded-full border-t-2 border-white transition-all duration-500">
-        <hr id="hr3" class="absolute top-full left-0 w-8 rounded-full border-t-2 border-white transition-all duration-500">
       </div>
+    </header>
 
-      <!-- Mobile Nav -->
-      <div onclick="toggleNav()" id="mobile-nav" class="absolute top-full right-0 translate-x-full flex flex-col bg-gradient-to-tr from-[#0083DD] to-[#9A338E] shadow-lg w-full text-[#344B47] text-xs font-semibold transition-all duration-500 md:hidden sm:text-sm">
-        <a class="p-3 bg-white hover:bg-transparent hover:text-white transition-all duration-500" href="#home">HOME</a>
-        <a class="p-3 bg-white hover:bg-transparent hover:text-white transition-all duration-500" href="#descriptors">DESCRIPTORS</a>
-        <a class="p-3 bg-white hover:bg-transparent hover:text-white transition-all duration-500" href="#about" onclick="openAboutPage()">ABOUT</a>
-      </div>
-    </div>
-  </header> 
-
-  <div class="container mx-auto px-6 w-full max-w-7xl">
     <!-- Hero Section -->
-    <section id="home" class="scroll-mt-28 mt-6 lg:mt-0">
-      <div id="home-div" class="flex flex-col w-full items-center mt-6 lg:flex-row lg:mt-0">
-        <div class="cstm-txt-shadow flex flex-col h-full justify-start items-start gap-6 w-full text-center lg:w-1/2 lg:text-start">
+    <section id="home">
+      <div id="home-div" class="flex flex-col w-full items-center lg:flex-row">
+        <div class="cstm-txt-shadow flex flex-col px-6 h-full justify-start items-start gap-6 w-full text-center mt-24 lg:mt-0 lg:w-1/2 lg:text-start">
           <h1 class="text-3xl w-full font-bold cstm-txt-shadow lg:text-5xl md:text-4xl">BNDescFinder</h1>
           <p>
             Discover and access Business Name Descriptors effortlessly with the BNDescFinder. 
@@ -68,16 +73,18 @@
           </p>
           <a onclick="startSearching()" class="border border-transparent px-4 py-2 rounded-lg shadow-lg bg-[#00B6D0] w-fit mx-auto font-semibold hover:bg-inherit hover:border-white lg:mx-0 transition-all duration-500" href="#descriptors">Get Started</a>
         </div>
-        <div class="w-full h-auto lg:flex-1">
+        <div class="w-full mt-0 h-auto lg:flex-1 lg:mt-10">
           <img class="object-cover mix-blend-multiply" src="./img/hero-image.jpg" alt="man that is searching">
         </div>
       </div>
+      <!-- End of Hero Section -->
     </section>
 
-    <hr class="mt-6 opacity-75">
+    <hr class="opacity-75">
 
     <!-- Descriptors Section -->
-    <section id="descriptors" class="flex flex-col justify-between scroll-mt-12 mt-12">
+    <section id="descriptors" class="flex flex-col justify-between scroll-mt-12 mt-12 px-6">
+      <!-- Form and Table -->
       <div>
         <h2 class="cstm-txt-shadow text-center font-bold text-xl md:text-3xl sm:text-2xl">BUSINESS NAME DESCRIPTORS</h2>
         <form class="mt-8 text-[#344B47] scroll-mt-8" id="search-form">
@@ -100,7 +107,7 @@
 
         <div class="mt-6 px-4" id="resultCounter"></div>
 
-        <div class="border-2 border-white rounded-lg shadow-xl mt-6 overflow-auto min-h-24 max-h-96 text-xs md:text-base sm:text-sm">
+        <div class="border-2 border-white rounded-lg shadow-xl mt-6 overflow-auto min-h-24 max-h-[40rem] text-xs lg:max-h-96 md:text-base sm:text-sm">
           <table class="w-full text-center" id="psicTable">
             <thead class="sticky top-0 text-[#344B47] bg-gradient-to-tr from-[#00B6D0] via-[#0083DD] to-[#9A338E] shadow-md">
               <tr>
@@ -157,9 +164,9 @@
             </tbody>
           </table>
         </div>
-
       </div>
 
+      <!-- Downloadable PSIC Descriptor File -->
       <div class="text-center mt-6">
         <p>PSIC Descriptors (as of March 06, 2023)</p>
         <p class="text-sm italic sm:text-sm">
@@ -168,18 +175,68 @@
           <a class="cstm-txt-shadow font-semibold hover:underline break-words" href="https://bnrs.dti.gov.ph/resources/download" target="_blank">https://bnrs.dti.gov.ph/resources/download</a>.
         </p>        
       </div>
+      <!-- End of Descriptors Section -->
     </section>
+    <!-- End of Main Container -->
   </div>
 
-  <!-- Modal: About Page -->
+  <!-- FAQs PAGE -->
+  <div id="faqs" class="hidden fixed top-0 left-0 w-full overflow-y-auto h-full bg-gradient-to-tr from-[#00B6D0] via-[#0083DD] to-[#9A338E]">
+    <div class="relative container mx-auto px-6 w-full max-w-7xl flex flex-col gap-4 my-16 lg:px-12">
+      <a class="absolute z-40 -top-6 right-6 hover:opacity-75" href="#home" onclick="closeFaqsPage()">
+        <i class="fa-solid fa-xmark text-2xl md:text-3xl"></i>
+      </a>
+      <h2 class="cstm-txt-shadow font-bold text-2xl sm:text-3xl">
+        FAQs
+      </h2>
+
+      <!-- Filter -->
+      <div class="flex gap-2 items-center">
+        <div class="flex gap-2 items-center border border-white rounded-lg p-2 shadow-lg w-fit">
+          <div id="filter-indicator" class="cstm-txt-shadow hidden">
+            <i class="fa-solid fa-filter"></i> <span class="hidden sm:inline-block">Filter:</span>
+          </div>
+          <select class="px-4 py-2 rounded-md outline-[#9A338E] bg-white text-[#344B47]" id="select-category" name="select-category">
+            <option disabled value="">Select Category...</option>
+            <option value="DESCRIPTOR">DESCRIPTOR</option>
+            <option value="NEW">NEW</option>
+            <option value="RENEWAL">RENEWAL</option>
+            <option value="UPGRADE">UPGRADE</option>
+            <option value="CANCELLATION">CANCELLATION</option>
+            <option value="CORRECTION">CORRECTION</option>
+            <option value="CTC">CTC</option>
+            <option value="OTHER DTI SERVICES">OTHER DTI SERVICES</option>
+          </select>
+        </div>
+        <div id="remove-filter"
+             class="cstm-txt-shadow hidden cursor-pointer bg-[#9A338E] hover:bg-red-600 px-2 py-1 rounded-md transition-all duration-500">
+             <i class="fa-solid fa-filter-circle-xmark"></i> <span class="hidden sm:inline-block">Remove Filter</span>
+        </div>
+      </div>
+
+      <!-- Questions Div -->
+      <div id="questions-div" class="flex flex-col gap-5 mt-4">
+      </div>
+      
+      <!-- Back to Home -->
+      <a class="cstm-txt-shadow border-b border-transparent w-fit mt-6 hover:opacity-75 hover:border-white transition-all duration-500"
+         href="#home" onclick="closeAboutPage()">
+        <i class="fa-solid fa-arrow-left-long"></i> Back to Home
+      </a>
+    </div>
+  </div>
+
+  <!-- ABOUT PAGE -->
   <div id="about" class="hidden fixed top-0 left-0 w-full h-screen bg-gradient-to-tr from-[#00B6D0] via-[#0083DD] to-[#9A338E] cstm-txt-shadow">
-    <a id="aboutPage-option" class="absolute z-50 top-10 right-10 hover:opacity-75" href="#home" onclick="closeAboutPage()">
-      <i class="fa-solid fa-xmark text-2xl md:text-3xl"></i>
-    </a>
-    <div class="max-w-5xl w-full mx-auto h-full flex flex-col gap-4 mt-20 p-6">
-      <h3 class="text-lg sm:text-xl">
+    <div class="relative container mx-auto px-6 w-full max-w-7xl flex flex-col gap-4 mt-16 lg:px-12">
+      <!--  -->
+      <a class="absolute z-40 -top-6 right-6 hover:opacity-75" href="#home" onclick="closeAboutPage()">
+        <i class="fa-solid fa-xmark text-2xl md:text-3xl"></i>
+      </a>
+
+      <h2 class="text-2xl sm:text-3xl">
         Welcome to the <strong>BNDescFinder</strong>!
-      </h3>
+      </h2>
 
       <p>This platform is a user-friendly, single-page website created to facilitate users in effortlessly exploring and accessing available Business Name Descriptors. It aims to simplify the search process and provide an intuitive interface for individuals seeking PSIC Descriptors.
       </p>
@@ -192,16 +249,22 @@
         Thank you for using the BNDescFinder. Explore, discover, and simplify your search for Business Name Descriptors effortlessly!
       </p>
 
-      <a class="w-fit mt-6 hover:opacity-75" href="#home" onclick="closeAboutPage()"><i class="fa-solid fa-arrow-left-long"></i> Back to Home</a>
+      <!-- Back to Home -->
+      <a class="border-b border-transparent w-fit mt-6 hover:opacity-75 hover:border-white transition-all duration-500"
+         href="#home" onclick="closeAboutPage()">
+        <i class="fa-solid fa-arrow-left-long"></i> Back to Home
+      </a>
     </div>  
   </div>
 
+  <!-- Footer -->
   <footer class="mt-12 border-t border-white text-xs text-center md:text-start sm:text-sm">
     <div class="cstm-txt-shadow flex flex-col items-center gap-12 p-10 mx-auto max-w-7xl w-full md:flex-row md:items-start md:gap-16">
       <div class="flex flex-col gap-2">
         <div><strong>Navigation:</strong></div>
         <a class="hover:opacity-75" href="#home">Home</a>
         <a class="hover:opacity-75" href="#descriptors">Descriptors</a>
+        <a class="hover:opacity-75" href="#faqs" onclick="openFaqsPage()">FAQs</a>
         <a class="hover:opacity-75" href="#about" onclick="openAboutPage()">About</a>
       </div>
 

@@ -1,0 +1,92 @@
+[
+  {
+    "category": "NEW",
+    "question": "Can 'E-Sabong' be registered with DTI?",
+    "answer": "No. 'E-Sabong' should be registered with SEC, then PAGCOR.",
+    "isActive": false
+  },
+  {
+    "category": "DESCRIPTOR",
+    "question": "What descriptor can be used instead of GENERAL MERCHANDISE?",
+    "answer": "\"CONSUMER GOODS TRADING\" or \"NON-SPECIALIZED WHOLESALE TRADING\".",
+    "isActive": false
+  },
+  {
+    "category": "CTC",
+    "question": "What if the original BN Certificate is lost and only the certification is available, can that be certified true copy (CTC)",
+    "answer": "YES.",
+    "isActive": false
+  },
+  {
+    "category": "DESCRIPTOR",
+    "question": "What descriptor can be used for businesses making skirts, armbands, etc.?",
+    "answer": "As long as they are involved in sewing, using fabric as material, and worn by people, it's considered GARMENTS MANUFACTURING, unless they prefer 'Trading' because 'Manufacturing' is said to be expensive for the mayor's permit.",
+    "isActive": false
+  },
+  {
+    "category": "DESCRIPTOR",
+    "question": "Is \"School and Office Supplies Trading\" a suitable descriptor for including xerox machines, computers, etc.?",
+    "answer": "Usually, no, but maybe it's possible if 'paper', 'ballpens', etc. (other school and office supplies) still dominate his merchandise. However, computers are different because there's a specific PSIC for computer trading.",
+    "isActive": false
+  },
+  {
+    "category": "UPGRADE",
+    "question": "Can the descriptor be upgraded if it's currently 'TRADING'?",
+    "answer": "Yes. Because that was already their BN before, and you will classify it by choosing the PSIC for their business, so the system will determine whether their business has the same name or not.",
+    "isActive": false
+  },
+  {
+    "category": "RENEWAL",
+    "question": "During renewal, if there's a typo/misspelling in the name, what should be done?",
+    "answer": "The owner should request correction through HO following the 'FOR CORRECTION' format and should be sent to 'bnrshelpdesk@dtiphmail.dti.gov.ph' along with a copy of the owner's government-issued ID.",
+    "isActive": false
+  },
+  {
+    "category": "CORRECTION",
+    "question": "If during new application, the owner decides they don't want the BN anymore, what should be done?",
+    "answer": "If the owner agreed to the initial BN but changes their mind, cancel the application, then apply for a new one charged to the owner. For online registrations, the client should email their request for change to 'bnrshelpdesk@dtiphmail.dti.gov.ph'.",
+    "isActive": false
+  },
+  {
+    "category": "DESCRIPTOR",
+    "question": "Are organizers of bazaars included in 'Events Organizing Services'?",
+    "answer": "YES.",
+    "isActive": false
+  },
+  {
+    "category": "OTHER DTI SERVICES",
+    "question": "Where does one apply for CIAP?",
+    "answer": "Visit 'www.ciap.dti.gov.ph' or call CPD at 86951711.",
+    "isActive": false
+  },
+  {
+    "category": "CORRECTION",
+    "question": "Are there corrections allowed for territorial scope?",
+    "answer": "Corrections are allowed for territorial scope if there's a lateral change within the same city/municipality. For example, If the client wrote 'San Jose' on the form, but you accidentally selected 'Dalig', adjustments can be made. We'll still follow the same process (Google Sheet + Google Form). However, corrections are not permitted if you mistakenly selected the wrong scope. For instance, the client selected the 'City/Municipality' but you accidentally selected only the 'Barangay'. The process is for you to upgrade or downgrade accordingly. The client will pay for what they checked, and you will pay for the incorrect selection you made. So, be careful not to mistakenly select the national level",
+    "isActive": false
+  },
+  {
+    "category": "CANCELLATION",
+    "question": "How to cancel a BN if it's past the expiration date?",
+    "answer": "The requirements are the same as for cancellation. Scan and send the documents to 'bnrshelpdesk@dtiphmail.dti.gov.ph' using your NC email, indicating that it's for archive. Wait for confirmation, and once you've confirmed that it's no longer in the system, they can be issued a negative certificate.",
+    "isActive": false
+  },
+  {
+    "category": "NEW",
+    "question": "Are lotto outlets registered with DTI?",
+    "answer": "Yes.",
+    "isActive": false
+  },
+  {
+    "category": "NEW",
+    "question": "What's the scope of an online shop?",
+    "answer": "Please be informed that we have not issued any rule regarding this. Online businesses may choose any of the Territorial Scope in registering their business name. However, the applicant should be informed that pursuant to the Revised Implementing Rules and Regulations of the Business Name (BN) Law, the territorial scope for the registered BN is where he/she may locate his/her business and use the registered BN during its validity period. It is further defined as the scope of location/area where a business may locate using its registered BN regardless of the number of branches/outlets which may be set up therein and is not to be considered the geographical limit within which to transact business.",
+    "isActive": false
+  },
+  {
+    "category": "CANCELLATION",
+    "question": "What's the process for cancellation if the status in the system shows renewal? (expired BN but within renewal period)",
+    "answer": "The requirements are the same as for cancellation, to be sent to BNRS via email, indicating that it's for archive.",
+    "isActive": false
+  }
+]

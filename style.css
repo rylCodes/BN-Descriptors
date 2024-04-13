@@ -9,10 +9,6 @@ html, body {
     overflow-x: hidden;
 }
 
-.cstm-txt-shadow {
-    text-shadow: 2px 3px 0px #344B47;
-}
-
 table {
     border-radius: 15px;
 }
@@ -22,8 +18,8 @@ tbody tr:nth-child(even) {
 }
 
 #home-div {  
-    min-height: calc(100vh - 4rem);
-    min-height: calc(100svh - 4rem);
+    min-height: 100vh;
+    min-height: 100svh;
 }
 
 #descriptors {  
