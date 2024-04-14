@@ -25,42 +25,44 @@
        class="z-30 absolute top-20 right-0 translate-x-full flex flex-col bg-gradient-to-tr from-[#0083DD] to-[#9A338E] shadow-lg w-full text-[#344B47] text-xs font-semibold transition-all duration-500 md:hidden sm:text-sm">
     <a class="p-3 bg-white hover:bg-transparent hover:text-white transition-all duration-500" href="#home">HOME</a>
     <a class="p-3 bg-white hover:bg-transparent hover:text-white transition-all duration-500" href="#descriptors">DESCRIPTORS</a>
-    <a class="p-3 bg-white hover:bg-transparent hover:text-white transition-all duration-500" href="#faqs" onclick="openFaqsPage()">FAQS</a>
-    <a class="p-3 bg-white hover:bg-transparent hover:text-white transition-all duration-500" href="#about" onclick="openAboutPage()">ABOUT</a>
+    <a class="p-3 bg-white hover:bg-transparent hover:text-white transition-all duration-500" href="#faqs" onclick="openPage('#faqs')">FAQS</a>
+    <a class="p-3 bg-white hover:bg-transparent hover:text-white transition-all duration-500" href="#resources" onclick="openPage('#resources')">RESOURCES</a>
+    <a class="p-3 bg-white hover:bg-transparent hover:text-white transition-all duration-500" href="#about" onclick="openPage('#about')">ABOUT</a>
   </div>
+
+  <!-- Header -->
+  <header class="absolute top-0 left-0 w-full">
+    <div class="flex justify-between items-center h-20 w-full max-w-7xl mx-auto px-6">
+      <!-- Logo -->
+      <a href="/">
+        <div class="flex items-center gap-2">
+          <div class="size-8 shadow-md rounded-md bg-white">
+            <img class="object-cover" src="./img/logo-64x64.png" alt="bn descriptor logo">
+          </div>
+          <div class="cstm-txt-shadow font-extrabold text-lg">BNDescFinder</div>
+        </div>
+      </a>  
+
+      <!-- Default -->
+      <nav class="hidden items-center gap-4 text-xs font-semibold cstm-txt-shadow md:gap-6 md:flex sm:text-sm">
+        <a class="py-1 border-b-4 border-transparent hover:border-white transition-all duration-500" href="#home">HOME</a>
+        <a class="py-1 border-b-4 border-transparent hover:border-white transition-all duration-500" href="#descriptors">DESCRIPTORS</a>
+        <a class="py-1 border-b-4 border-transparent hover:border-white transition-all duration-500" href="#faqs" onclick="openPage('#faqs')">FAQs</a>
+        <a class="py-1 border-b-4 border-transparent hover:border-white transition-all duration-500" href="#resources" onclick="openPage('#resources')">RESOURCES</a>
+        <a class="py-1 border-b-4 border-transparent hover:border-white transition-all duration-500" href="#about" onclick="openPage('#about')">ABOUT</a>
+      </nav>
+
+      <!-- Hamburger Menu -->
+      <div onclick="toggleNav()" class="cursor-pointer relative h-5 w-8 items-center md:hidden" tabindex="0">
+        <hr id="hr1" class="absolute top-0 left-0 w-8 rounded-full border-t-2 border-white transition-all duration-500">
+        <hr id="hr2" class="absolute top-1/2 left-0 w-8 rounded-full border-t-2 border-white transition-all duration-500">
+        <hr id="hr3" class="absolute top-full left-0 w-8 rounded-full border-t-2 border-white transition-all duration-500">
+      </div>
+    </div>
+  </header>
   
   <!-- MAIN CONTAINER: Home and Descriptors Section -->
-  <div class="relative container mx-auto w-full max-w-7xl">
-    <!-- Header -->
-    <header>
-      <div class="absolute top-0 left-0 flex justify-between items-center h-20 w-full max-w-7xl mx-auto px-6">
-        <!-- Logo -->
-        <a href="/">
-          <div class="flex items-center gap-2">
-            <div class="size-8 shadow-md rounded-md bg-white">
-              <img class="object-cover" src="./img/logo-64x64.png" alt="bn descriptor logo">
-            </div>
-            <div class="cstm-txt-shadow font-extrabold text-lg">BNDescFinder</div>
-          </div>
-        </a>  
-  
-        <!-- Default -->
-        <nav class="hidden items-center gap-4 text-xs font-semibold cstm-txt-shadow md:gap-6 md:flex sm:text-sm">
-          <a class="py-1 border-b-4 border-transparent hover:border-white transition-all duration-500" href="#home">HOME</a>
-          <a class="py-1 border-b-4 border-transparent hover:border-white transition-all duration-500" href="#descriptors">DESCRIPTORS</a>
-          <a class="py-1 border-b-4 border-transparent hover:border-white transition-all duration-500" href="#faqs" onclick="openFaqsPage()">FAQS</a>
-          <a class="py-1 border-b-4 border-transparent hover:border-white transition-all duration-500" href="#about" onclick="openAboutPage()">ABOUT</a>
-        </nav>
-  
-        <!-- Hamburger Menu -->
-        <div onclick="toggleNav()" class="cursor-pointer relative h-5 w-8 items-center md:hidden" tabindex="0">
-          <hr id="hr1" class="absolute top-0 left-0 w-8 rounded-full border-t-2 border-white transition-all duration-500">
-          <hr id="hr2" class="absolute top-1/2 left-0 w-8 rounded-full border-t-2 border-white transition-all duration-500">
-          <hr id="hr3" class="absolute top-full left-0 w-8 rounded-full border-t-2 border-white transition-all duration-500">
-        </div>
-      </div>
-    </header>
-
+  <div class="container mx-auto w-full max-w-7xl">
     <!-- Hero Section -->
     <section id="home">
       <div id="home-div" class="flex flex-col w-full items-center lg:flex-row">
@@ -183,12 +185,10 @@
   <!-- FAQs PAGE -->
   <div id="faqs" class="hidden fixed top-0 left-0 w-full overflow-y-auto h-full bg-gradient-to-tr from-[#00B6D0] via-[#0083DD] to-[#9A338E]">
     <div class="relative container mx-auto px-6 w-full max-w-7xl flex flex-col gap-4 my-16 lg:px-12">
-      <a class="absolute z-40 -top-6 right-6 hover:opacity-75" href="#home" onclick="closeFaqsPage()">
+      <a class="absolute z-40 -top-6 right-6 hover:opacity-75" href="#home" onclick="closePage('#faqs')">
         <i class="fa-solid fa-xmark text-2xl md:text-3xl"></i>
       </a>
-      <h2 class="cstm-txt-shadow font-bold text-2xl sm:text-3xl">
-        FAQs
-      </h2>
+      <h2 class="cstm-txt-shadow font-bold text-2xl sm:text-3xl">FAQs</h2>
 
       <!-- Filter -->
       <div class="flex gap-2 items-center">
@@ -197,7 +197,7 @@
             <i class="fa-solid fa-filter"></i> <span class="hidden sm:inline-block">Filter:</span>
           </div>
           <select class="z-30 px-4 py-2 rounded-md outline-[#9A338E] bg-white text-[#344B47]" id="select-category" name="select-category">
-            <option disabled value="">Select Category...</option>
+            <option disabled value="">Select category...</option>
             <option value="DESCRIPTOR">DESCRIPTOR</option>
             <option value="NEW">NEW</option>
             <option value="RENEWAL">RENEWAL</option>
@@ -215,34 +215,89 @@
       </div>
 
       <!-- Questions Div -->
-      <div id="questions-div" class="flex flex-col gap-5 mt-4">
+      <div id="questions-div" class="flex flex-col gap-5 mt-2">
       </div>
       
       <!-- Back to Home -->
-      <a class="cstm-txt-shadow border-b border-transparent w-fit mt-6 hover:opacity-75 hover:border-white transition-all duration-500"
-         href="#home" onclick="closeFaqsPage()">
-        <i class="fa-solid fa-arrow-left-long"></i> Back to Home
+      <a class="cstm-txt-shadow w-fit mt-6 hover:opacity-75 transition-all duration-500"
+         href="#home" onclick="closePage('#faqs')">
+        <i class="fa-solid fa-arrow-left-long text-lg"></i> Back to Home
       </a>
     </div>
   </div>
+
+  <!-- RESOURCES PAGE -->
+  <div id="resources" class="hidden fixed top-0 left-0 w-full overflow-y-auto h-full bg-gradient-to-tr from-[#00B6D0] via-[#0083DD] to-[#9A338E] cstm-txt-shadow">
+    <div class="relative container mx-auto px-6 w-full max-w-7xl flex flex-col gap-4 my-16 lg:px-12">
+      <!-- Close button -->
+      <a class="absolute z-40 -top-6 right-6 hover:opacity-75" href="#home" onclick="closePage('#resources')">
+        <i class="fa-solid fa-xmark text-2xl md:text-3xl"></i>
+      </a>
+      <!-- Heading 2 -->
+      <h2 class="font-bold text-2xl sm:text-3xl">Resources</h2>
+      <div class="flex flex-col gap-4">
+        <div class="flex flex-col gap-1">
+          <h3 class="text-xl font-semibold rounded md:text-2xl">DAO No 18-07, Series 2018</h3>
+          <a class="border-b border-transparent hover:border-white transition-all duration-500 w-fit" href="https://dtibnrs.s3-ap-southeast-1.amazonaws.com/files/20240322/qtpoaytgak1015.xlsx" target="_blank">
+            PSIC Descriptors
+          </a>
+          <a class="border-b border-transparent hover:border-white transition-all duration-500 w-fit" href="https://bnrs-testing.s3-ap-southeast-1.amazonaws.com/files/20200409/d1zaxfpvzd1948.pdf" target="_blank">
+            Schedule of Fees
+          </a>
+          <a class="border-b border-transparent hover:border-white transition-all duration-500 w-fit" href="https://dtibnrs.s3-ap-southeast-1.amazonaws.com/files/20230629/n1xa3vwmok1513.pdf" target="_blank">
+            List of Government-issued IDs
+          </a>
+          <a class="border-b border-transparent hover:border-white transition-all duration-500 w-fit" href="https://bnrs-testing.s3-ap-southeast-1.amazonaws.com/files/20200409/bjsn03g7yn1953.pdf" target="_blank">
+            Undertaking Document
+          </a>
+        </div>
+        <hr class="opacity-50">
+
+        <div class="flex flex-col gap-1">
+          <h3 class="text-xl font-semibold rounded md:text-2xl">DTI - Business Name Registration</h3>
+          <a class="border-b border-transparent hover:border-white transition-all duration-500 w-fit" href="https://dtibnrs.s3-ap-southeast-1.amazonaws.com/files/20230223/oetuxzsvq60913.pdf" target="_blank">
+            BN Application Form (New/Renewal)
+          </a>
+          <a class="border-b border-transparent hover:border-white transition-all duration-500 w-fit" href="https://dtibnrs.s3-ap-southeast-1.amazonaws.com/files/20230222/jg3h7wrai80758.pdf" target="_blank">
+            Other Business Name-Related Application Form
+          </a>
+        </div>
+        <hr class="opacity-50">
+    
+        <div class="flex flex-col gap-1">
+          <h3 class="text-xl font-semibold rounded md:text-2xl">Barangay Micro Business Enterprise Application</h3>
+          <a class="border-b border-transparent hover:border-white transition-all duration-500 w-fit" href="https://dtiwebfiles.s3-ap-southeast-1.amazonaws.com/Downloadable+Files/BMBE+Registration+Application+Form/BMBE+Form+01_BMBE+Application+form.pdf" target="_blank">
+            BMBE Application Form (New/Renewal)
+          </a>
+          <a class="border-b border-transparent hover:border-white transition-all duration-500 w-fit" href="https://negosyocenter-antipolo.azurewebsites.net/static/downloads/breakdown-of-asset.pdf" target="_blank">
+            Breakdown of Asset Form
+          </a>
+        </div>
+      </div>
+      <!-- Back to Home -->
+      <a class="cstm-txt-shadow w-fit mt-6 hover:opacity-75 transition-all duration-500"
+          href="#home" onclick="closePage('#resources')">
+        <i class="fa-solid fa-arrow-left-long text-lg"></i> Back to Home
+      </a>
+    </div>
+  </div>
+
 
   <!-- ABOUT PAGE -->
   <div id="about" class="hidden fixed top-0 left-0 w-full h-screen bg-gradient-to-tr from-[#00B6D0] via-[#0083DD] to-[#9A338E] cstm-txt-shadow">
     <div class="relative container mx-auto px-6 w-full max-w-7xl flex flex-col gap-4 mt-16 lg:px-12">
       <!--  -->
-      <a class="absolute z-40 -top-6 right-6 hover:opacity-75" href="#home" onclick="closeAboutPage()">
+      <a class="absolute z-40 -top-6 right-6 hover:opacity-75" href="#home" onclick="closePage('#about')">
         <i class="fa-solid fa-xmark text-2xl md:text-3xl"></i>
       </a>
 
-      <h2 class="text-2xl sm:text-3xl">
-        Welcome to the <strong>BNDescFinder</strong>!
-      </h2>
+      <h2 class="font-bold text-2xl sm:text-3xl">About BNDescFinder</h2>
 
-      <p>This platform is a user-friendly, single-page website created to facilitate users in effortlessly exploring and accessing available Business Name Descriptors. It aims to simplify the search process and provide an intuitive interface for individuals seeking PSIC Descriptors.
+      <p>Welcome to <strong>BNDescFinder</strong> This platform is a user-friendly, single-page website created to facilitate users in effortlessly exploring and accessing available Business Name Descriptors. It aims to simplify the search process and provide an intuitive interface for individuals seeking PSIC Descriptors.
       </p>
 
       <p>
-        Please note that while the BNDescFinder is independently owned and hosted by <a class="font-bold hover:underline" href="https://darylandres.com/" target="_blank">NCBC Daryl Andres</a>, the data is sourced from the <a class="font-semibold hover:underline" href="https://bnrs.dti.gov.ph/" target="_blank">Business Name Registration System (BNRS)</a>. The core dataset used within this tool is extracted from the comprehensive PSIC Descriptors file, accessible for download at <a class="font-semibold hover:underline" href="https://bnrs.dti.gov.ph/resources/download" target="_blank">https://bnrs.dti.gov.ph/resources/download</a> via the BNRS platform. 
+        Please note that while the BNDescFinder is independently owned and hosted by <a class="font-bold hover:underline" href="https://darylandres.com/" target="_blank">NCBC Daryl Andres</a>, the data and some, if not all, downloadable resources provided on this platform are sourced from the <a class="font-semibold hover:underline" href="https://bnrs.dti.gov.ph/" target="_blank">Business Name Registration System (BNRS)</a>. The core dataset used within this tool is extracted from the comprehensive PSIC Descriptors file, accessible for download at <a class="font-semibold hover:underline" href="https://bnrs.dti.gov.ph/resources/download" target="_blank">https://bnrs.dti.gov.ph/resources/download</a> via the BNRS platform. 
       </p>
       
       <p>
@@ -250,9 +305,9 @@
       </p>
 
       <!-- Back to Home -->
-      <a class="border-b border-transparent w-fit mt-6 hover:opacity-75 hover:border-white transition-all duration-500"
-         href="#home" onclick="closeAboutPage()">
-        <i class="fa-solid fa-arrow-left-long"></i> Back to Home
+      <a class="w-fit mt-6 hover:opacity-75 transition-all duration-500"
+         href="#home" onclick="closePage('#about')">
+        <i class="fa-solid fa-arrow-left-long text-lg"></i> Back to Home
       </a>
     </div>  
   </div>
@@ -262,29 +317,30 @@
     <div class="cstm-txt-shadow flex flex-col items-center gap-12 p-10 mx-auto max-w-7xl w-full md:flex-row md:items-start md:gap-16">
       <div class="flex flex-col gap-2">
         <div><strong>Navigation:</strong></div>
-        <a class="hover:opacity-75" href="#home">Home</a>
-        <a class="hover:opacity-75" href="#descriptors">Descriptors</a>
-        <a class="hover:opacity-75" href="#faqs" onclick="openFaqsPage()">FAQs</a>
-        <a class="hover:opacity-75" href="#about" onclick="openAboutPage()">About</a>
+        <a class="hover:text-gray-200" href="#home">Home</a>
+        <a class="hover:text-gray-200" href="#descriptors">Descriptors</a>
+        <a class="hover:text-gray-200" href="#faqs" onclick="openPage('#faqs')">FAQs</a>
+        <a class="hover:text-gray-200" href="#resources" onclick="openPage('#resources')">Resources</a>
+        <a class="hover:text-gray-200" href="#about" onclick="openPage('#about')">About</a>
       </div>
 
       <div class="flex flex-col gap-2">
         <div><strong>Other Web Apps:</strong></div>
-        <a class="hover:opacity-75" href="https://qrlink-maker.darylandres.com/" target="_blank">QRLink</a>
-        <a class="hover:opacity-75" href="https://wonderful-bay-090b91c00.4.azurestaticapps.net/" target="_blank">Business Directory</a>
+        <a class="hover:text-gray-200" href="https://qrlink-maker.darylandres.com/" target="_blank">QRLink</a>
+        <a class="hover:text-gray-200" href="https://wonderful-bay-090b91c00.4.azurestaticapps.net/" target="_blank">Business Directory</a>
       </div>
 
       <div class="flex flex-col gap-2">
         <div><strong>Helpful links:</strong></div>
-        <a class="hover:opacity-75" href="https://bnrs.dti.gov.ph/" target="_blank">BNRS</a>
-        <a class="hover:opacity-75" href="https://bmbe.dti.gov.ph/" target="_blank">BMBE Official Site</a>
+        <a class="hover:text-gray-200" href="https://bnrs.dti.gov.ph/" target="_blank">BNRS</a>
+        <a class="hover:text-gray-200" href="https://bmbe.dti.gov.ph/" target="_blank">BMBE Official Site</a>
       </div>
       
     </div>
     <div class="bg-[rgba(0,0,0,0.2)]">
       <div class="flex flex-col justify-between gap-2 items-center p-6 max-w-7xl mx-auto w-full md:flex-row">
         <p><strong>Copyright &copy; 2024 BNDescFinder.</strong> All rights reserved.</p>
-        <p class="version">Version: <strong>1.2.4</strong></p>
+        <p class="version">Version: <strong>1.3.0</strong></p>
       </div>
     </div>
   </footer>

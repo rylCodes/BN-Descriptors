@@ -6,6 +6,7 @@ const thElement = psicTable.querySelectorAll("th");
 const resultCounter = document.querySelector("#resultCounter");
 const aboutPage = document.querySelector("#about");
 const faqsPage = document.querySelector("#faqs");
+const resourcesPage = document.querySelector("#resources");
 const clearText = document.querySelector("#clear-text");
 const container = document.querySelector(".container");
 const questionDiv = document.querySelector("#questions-div");
@@ -14,31 +15,20 @@ const mobileNav = document.querySelector("#mobile-nav");
 let prevActiveTH = null
 let searchTimeout;
 
-// About Page Functions
-function closeAboutPage() {
-    aboutPage.classList.add("hidden");
+function closePage(page) {
+    document.querySelector(page).classList.add("hidden");
     container.classList.remove("hidden");
     mobileNav.classList.remove("hidden");
 }
 
-function openAboutPage() {
-    aboutPage.classList.remove("hidden");
+async function openPage(page) {
+    document.querySelector(page).classList.remove("hidden");
     container.classList.add("hidden");
     mobileNav.classList.add("hidden");
-}
 
-// Faqs Page Functions
-function closeFaqsPage() {
-    faqsPage.classList.add("hidden");
-    container.classList.remove("hidden");
-    mobileNav.classList.remove("hidden");
-}
-
-async function openFaqsPage() {
-    faqsPage.classList.remove("hidden");
-    container.classList.add("hidden");
-    mobileNav.classList.add("hidden");
-    await initializeFaqs();
+    if (page === '#faqs') {
+        await initializeFaqs();
+    }
 }
 
 let faqs;
@@ -343,12 +333,16 @@ function startSearching() {
     }, 300);
 }
 
-if (window.location.hash === "#about" || window.location.hash === "index.html#about") {
-    openAboutPage();
+if (window.location.hash === "#about") {
+    openPage('#about');
 }
 
-if (window.location.hash === "#faqs" || window.location.hash === "index.html#faqs") {
-    openFaqsPage();
+if (window.location.hash === "#resources") {
+    openPage('#resources');
+};
+
+if (window.location.hash === "#faqs") {
+    openPage('#faqs');
 };
 
 searchForm.addEventListener("input", handleInput);
